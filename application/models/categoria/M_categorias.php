@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_cadastros extends CI_Model {
+class M_categorias extends CI_Model {
 	
 	/**
 	 * Grava os dados na tabela.

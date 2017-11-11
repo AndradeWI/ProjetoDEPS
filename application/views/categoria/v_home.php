@@ -20,12 +20,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<? endif; ?>
 		<div class="col-md-12">
 			<div class="row">
-				 <a class="btn btn-success" href="../../../../categoria/home">Home</a>
+				 <a class="btn btn-success" href="../../../../home">Home</a>
 				<a class="btn btn-success" href="../../../../categoria/cadastro/create">Novo Cadastro</a>
 			</div>
 
 			<div class="row">
-				<h3><?= $categorias->num_rows(); ?> registros(s)</h3>
+				<h3><?= $categorias->num_rows(); ?> registro(s)</h3>
 				
 				<div class="row">
 					<? if($categorias->num_rows() > 0): ?>
