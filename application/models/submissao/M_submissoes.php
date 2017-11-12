@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_cadastros extends CI_Model {
+class M_submissoes extends CI_Model {
 	
 	/**
 	 * Grava os dados na tabela.
@@ -13,14 +13,14 @@ class M_cadastros extends CI_Model {
 		
 		if ($dados) {
 			if ($id) {
-				$this->db->where('id_categoria', $id);
-				if ($this->db->update("categoria", $dados)) {
+				$this->db->where('id_submissao', $id);
+				if ($this->db->update("submissao", $dados)) {
 					return true;
 				} else {
 					return false;
 				}
 			} else {
-				if ($this->db->insert("categoria", $dados)) {
+				if ($this->db->insert("submissao", $dados)) {
 					return true;
 				} else {
 					return false;
@@ -37,10 +37,10 @@ class M_cadastros extends CI_Model {
 	public function get($id = null){
 		
 		if ($id) {
-			$this->db->where('id_categoria', $id);
+		$this->db->where('id_submissao', $id);
 		}
-		$this->db->order_by("id_categoria", 'desc');
-		return $this->db->get('categoria');
+		$this->db->order_by("id_submissao", 'desc');
+		return $this->db->get('submissao');
 	}
 	/**
 	 * Deleta um registro.
@@ -49,7 +49,7 @@ class M_cadastros extends CI_Model {
 	 */
 	public function delete($id = null){
 		if ($id) {
-			return $this->db->where('id_categoria', $id)->delete('categoria');
+			return $this->db->where('id_submissao', $id)->delete('submissao');
 		}
 	}
 }

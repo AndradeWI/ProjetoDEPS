@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$variaveis['mensagem'] = null;
-		$variaveis['categorias'] = $this->m_categorias->get();
-		$this->load->view('categoria/v_home', $variaveis);
+		$variaveis['submissoes'] = $this->m_submissoes->get();
+		$this->load->view('submissao/v_home', $variaveis);
 	}
 }

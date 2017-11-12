@@ -20,9 +20,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h1 class="text-center"><?= $titulo ?></h1>
 		<div class="col-md-6 col-md-offset-3">
 			<div class="row">
-				<form method="post" action="store">
+				<form method="post" action="../../../categoria/cadastro/store">
 			  
-					<div class="form-group">
+				<div class="form-group">
 						<label for="nome">Nome</label><span class="erro"><?php echo form_error('nome') ?  : ''; ?></span>
 						<input type="text" name="nome" id="nome" class="form-control" value="<?= set_value('nome') ? : (isset($nome) ? $nome : '') ?>" autofocus='true' />
 					</div>

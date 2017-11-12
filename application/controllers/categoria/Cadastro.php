@@ -51,8 +51,8 @@ class Cadastro extends CI_Controller {
 				"descricao_categoria" => $this->input->post('descricao')
 			
 			);
-			if ($this->m_cadastros->store($dados, $id)) {
-				$variaveis['categorias'] = $this->m_cadastros->get();
+			if ($this->m_categorias->store($dados, $id)) {
+				$variaveis['categorias'] = $this->m_categorias->get();
 				$variaveis['mensagem'] = "Dados gravados com sucesso!";
 				$this->load->view('categoria/v_home', $variaveis);
 			} else {
@@ -73,14 +73,14 @@ class Cadastro extends CI_Controller {
 		
 		if ($id) {
 			
-			$categoria = $this->m_cadastros->get($id);
+			$categoria = $this->m_categorias->get($id);
 			
 			if ($categoria->num_rows() > 0 ) {
 				$variaveis['titulo'] = 'Edição de Registro';
 				$variaveis['id'] = $categoria->row()->id_categoria;
 				$variaveis['nome'] = $categoria->row()->nome_categoria;
 				$variaveis['descricao'] = $categoria->row()->descricao_categoria;
-				$this->load->view('categoria/v_editar', $variaveis);
+				$this->load->view('categoria/v_cadastro', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Registro não encontrado." ;
 				$this->load->view('errors/html/v_erro', $variaveis);
@@ -95,8 +95,8 @@ class Cadastro extends CI_Controller {
 	 * @return boolean;
 	 */
 	public function delete($id = null) {
-		if ($this->m_cadastros->delete($id)) {
-			$variaveis['categorias'] = $this->m_cadastros->get();
+		if ($this->m_categorias->delete($id)) {
+			$variaveis['categorias'] = $this->m_categorias->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
 			$this->load->view('categoria/v_home', $variaveis);
 		}

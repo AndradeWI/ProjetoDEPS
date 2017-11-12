@@ -6,46 +6,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Categoria</title>
+	<title>Submissão</title>
 	<link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-center">Categoria</h1>
-			<? if($mensagem != null): ?>
-					<div class="alert alert-success text-center">
-						<?= $mensagem; ?>
-					</div>
-				<? endif; ?>
+		<h1 class="text-center">Submissão</h1>
+		<? if($mensagem != null): ?>
+			<div class="alert alert-success text-center">
+				<?= $mensagem; ?>
+			</div>
+		<? endif; ?>
 		<div class="col-md-12">
 			<div class="row">
-				 <a class="btn btn-success" href="../../../../home">Home</a>
-				<a class="btn btn-success" href="../../../../categoria/cadastro/create">Novo Cadastro</a>
+				<a class="btn btn-success" href="../../../../home">Home</a>
+				<a class="btn btn-success" href="../../../../submissao/cadastro/create">Novo Cadastro</a>
 			</div>
 
 			<div class="row">
-				<h3><?= $categorias->num_rows(); ?> registro(s)</h3>
+				<h3><?= $submissoes->num_rows(); ?> registro(s)</h3>
 				
 				<div class="row">
-					<? if($categorias->num_rows() > 0): ?>
+					<? if($submissoes->num_rows() > 0): ?>
 						<table class="table table-striped">
 							<thead>
 								<tr>
 									<th>Código</th>
-									<th>Nome</th>
-									<th>Descrição</th>
+									<th>Título</th>
+									<th>Data submetida</th>
+									<th>Status</th>
 									<th>Ações</th>
 								</tr>
 							</thead>
 							<tbody>
-								<? foreach($categorias->result() as $categoria): ?>
-									<tr>
-										<td><?= $categoria->id_categoria ?></td>
-										<td><?= $categoria->nome_categoria ?></td>
-										<td><?= $categoria->descricao_categoria ?></td>
-										<td><a  href="../../../../categoria/cadastro/edit/<?= $categoria->id_categoria ?>" >Editar</a>
-											| <a href="../../../../categoria/home" class='confirma_exclusao' data-id="<?= $categoria->id_categoria ?>" data-nome="<?= $categoria->nome_categoria ?>" />Excluir</a></td>
+								<? foreach($submissoes->result() as $submissao): ?>
+									<tr> 
+										<td><?= $submissao->id_submissao ?></td>
+										<td><?= $submissao->titulo ?></td>
+										<td><?= $submissao->data_submissao ?></td>
+										<td><?= $submissao->status_sub ?></td>
+
+										<td>
+											<a  href="../../../../submissao/cadastro/download/" >Download</a>
+											|
+											<a  href="../../../../submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
+											| <a href="../../../../submissao/home" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
 										</tr>
 									<? endforeach; ?>
 								</tbody>
@@ -78,7 +84,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<script>
 
-				$(function(){
+
+				$(function(){	
+
 					$('.confirma_exclusao').on('click', function(e) {
 						e.preventDefault();
 
@@ -97,9 +105,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
-						document.location.href = "../../../categoria/cadastro/delete/"+id;
-					});					
+						document.location.href = "../../../submissao/cadastro/delete/"+id;
+					});	
+
 				});
+
 			</script>
 
 		</body>
