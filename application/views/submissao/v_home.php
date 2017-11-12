@@ -47,8 +47,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<td><?= $submissao->data_submissao ?></td>
 										<td><?= $submissao->status_sub ?></td>
 
-										<td><a  href="../../../../submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
-											| <a href="../../../../submissao/home" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>" />Excluir</a></td>
+										<td>
+											<a  href="../../../../submissao/cadastro/download/" >Download</a>
+											|
+											<a  href="../../../../submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
+											| <a href="../../../../submissao/home" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
 										</tr>
 									<? endforeach; ?>
 								</tbody>
@@ -81,7 +84,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<script>
 
-				$(function(){
+
+				$(function(){	
+
 					$('.confirma_exclusao').on('click', function(e) {
 						e.preventDefault();
 
@@ -101,8 +106,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
 						document.location.href = "../../../submissao/cadastro/delete/"+id;
-					});					
+					});	
+
 				});
+
 			</script>
 
 		</body>
