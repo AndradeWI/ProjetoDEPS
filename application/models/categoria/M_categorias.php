@@ -42,6 +42,15 @@ class M_categorias extends CI_Model {
 		$this->db->order_by("id_categoria", 'desc');
 		return $this->db->get('categoria');
 	}
+	// Busca por nome
+	public function busca($nome = null){
+		
+		if ($nome) {
+			$this->db->where('nome_categoria', $nome);
+		}
+		$this->db->order_by("nome_categoria", 'desc');
+		return $this->db->get('categoria');
+	}
 	/**
 	 * Deleta um registro.
 	 * @param $id do registro a ser deletado

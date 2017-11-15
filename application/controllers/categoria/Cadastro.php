@@ -24,32 +24,35 @@ class Cadastro extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		$regras = array(
-		        array(
-		                'field' => 'nome',
-		                'label' => 'Nome',
-		                'rules' => 'required'
-		        ),
-		        array(
-		                'field' => 'descricao',
-		                'label' => 'Descrição',
-		                'rules' => 'required'
-		        )
+			array(
+				'field' => 'nome',
+				'label' => 'Nome',
+				'rules' => 'required'
+			),
+			array(
+				'field' => 'descricao',
+				'label' => 'Descrição',
+				'rules' => 'required'
+			)
 		);
 		
 		$this->form_validation->set_rules($regras);
 
-		if ($this->form_validation->run() == FALSE) {
+		$nome = $this->input->post('nome');
+		$categoria = $this->m_categorias->busca($nome);
+		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 ) ) {
 			$variaveis['titulo'] = 'Novo Registro';
+			$variaveis['mensagem'] = 'Categoria já está cadastrada!';
 			$this->load->view('categoria/v_cadastro', $variaveis);
 		} else {
 			
 			$id = $this->input->post('id');
 			
 			$dados = array(
-			
+				
 				"nome_categoria" => $this->input->post('nome'),
 				"descricao_categoria" => $this->input->post('descricao')
-			
+				
 			);
 			if ($this->m_categorias->store($dados, $id)) {
 				$variaveis['categorias'] = $this->m_categorias->get();
@@ -59,7 +62,7 @@ class Cadastro extends CI_Controller {
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
 				$this->load->view('errors/html/v_erro', $variaveis);
 			}
-				
+			
 		}
 	}
 

@@ -7,21 +7,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Categoria</title>
-	<link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>/assets/bootstrap/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<div class="container">
 		<h1 class="text-center">Categoria</h1>
-			<? if($mensagem != null): ?>
-					<div class="alert alert-success text-center">
-						<?= $mensagem; ?>
-					</div>
-				<? endif; ?>
+		<? if($mensagem != null): ?>
+			<div class="alert alert-success text-center">
+				<?= $mensagem; ?>
+			</div>
+		<? endif; ?>
 		<div class="col-md-12">
 			<div class="row">
-				 <a class="btn btn-success" href="../../../../home">Home</a>
-				<a class="btn btn-success" href="../../../../categoria/cadastro/create">Novo Cadastro</a>
+				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>
+				<a class="btn btn-success" href="<?= base_url(); ?>categoria/cadastro/create">Novo Cadastro</a>
 			</div>
 
 			<div class="row">
@@ -44,8 +44,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<td><?= $categoria->id_categoria ?></td>
 										<td><?= $categoria->nome_categoria ?></td>
 										<td><?= $categoria->descricao_categoria ?></td>
-										<td><a  href="../../../../categoria/cadastro/edit/<?= $categoria->id_categoria ?>" >Editar</a>
-											| <a href="../../../../categoria/home" class='confirma_exclusao' data-id="<?= $categoria->id_categoria ?>" data-nome="<?= $categoria->nome_categoria ?>" />Excluir</a></td>
+										<td><a  href="<?= base_url(); ?>/categoria/cadastro/edit/<?= $categoria->id_categoria ?>" >Editar</a>
+											| <a href="#" class='confirma_exclusao' data-id="<?= $categoria->id_categoria ?>" data-nome="<?= $categoria->nome_categoria ?>" />Excluir</a></td>
 										</tr>
 									<? endforeach; ?>
 								</tbody>
@@ -73,8 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
-			<script src="../assets/js/jquery.js"></script>
-			<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+			<script src="<?= base_url(); ?>/assets/js/jquery.js"></script>
+			<script src="<?= base_url(); ?>/assets/bootstrap/js/bootstrap.min.js"></script>
 
 			<script>
 
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
-						document.location.href = "../../../categoria/cadastro/delete/"+id;
+						document.location.href = "<?= base_url(); ?>/categoria/cadastro/delete/"+id;
 					});					
 				});
 			</script>
