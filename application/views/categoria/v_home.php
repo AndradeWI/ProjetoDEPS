@@ -18,6 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?= $mensagem; ?>
 			</div>
 		<? endif; ?>
+		<? if($restricao != null): ?>
+			<div class="alert alert-danger text-center">
+				<?= $restricao; ?>
+			</div>
+		<? endif; ?>
 		<div class="col-md-12">
 			<div class="row">
 				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>

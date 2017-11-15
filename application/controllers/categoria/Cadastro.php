@@ -98,7 +98,15 @@ class Cadastro extends CI_Controller {
 	 * @return boolean;
 	 */
 	public function delete($id = null) {
-		if ($this->m_categorias->delete($id)) {
+		$categoria = $this->m_submissoes->FKCategoria($id);
+		if ($categoria->num_rows() > 0) {
+			$variaveis['categorias'] = $this->m_categorias->get();
+			$variaveis['restricao'] = "Categoria não pode ser excluida!";
+			$this->load->view('categoria/v_home', $variaveis);
+			
+		}
+		else{
+			$this->m_categorias->delete($id);
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
 			$this->load->view('categoria/v_home', $variaveis);

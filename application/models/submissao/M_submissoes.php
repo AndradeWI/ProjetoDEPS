@@ -52,6 +52,16 @@ class M_submissoes extends CI_Model {
 		$this->db->order_by("isb", 'desc');
 		return $this->db->get('submissao');
 	}
+
+	// Busca por isbn
+	public function FKCategoria($fk = null){
+		
+		if ($fk) {
+			$this->db->where('fk_id_categoria', $fk);
+		}
+		$this->db->order_by("fk_id_categoria", 'desc');
+		return $this->db->get('submissao');
+	}
 	/**
 	 * Deleta um registro.
 	 * @param $id do registro a ser deletado
