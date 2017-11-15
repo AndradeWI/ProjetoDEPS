@@ -63,7 +63,7 @@ class Cadastro extends CI_Controller {
 			),
 			array(
 				'field' => 'isb',
-				'label' => 'isb',
+				'label' => 'isbn',
 				'rules' => 'required'
 			),
 			array(
@@ -77,29 +77,24 @@ class Cadastro extends CI_Controller {
 				'rules' => 'required'
 			) 
 		);
-		// verificamos se o upload foi processado com sucesso
-		//if ( ! $this->upload->do_upload('arquivo'))
-		//{
-            // em caso de erro retornamos os mesmos para uma variável
-            // e enviamos para a home
-		//	$data= array('error' => $this->upload->display_errors());
-		//	$this->load->view('submissao/v_cadastro',$data);
-		//}else{ 
 		
 		$this->form_validation->set_rules($regras);
+		$isbn = $this->input->post('isb');
+		$submissao = $this->m_submissoes->busca($isbn);
 
-		if ($this->form_validation->run() == FALSE) {
+		if (($this->form_validation->run() == FALSE)|| ($submissao->num_rows() > 0 ) ) {
 			$variaveis['titulo'] = 'Novo Registro';
+			$variaveis['mensagem'] = 'Isbn já está cadastrado!';
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$this->load->view('submissao/v_cadastro', $variaveis);
 		} else {
 			$id = $this->input->post('id');
-
+			$this->upload->do_upload('arquivo');
             //se correu tudo bem, recuperamos os dados do arquivo
 			$data['dadosArquivo'] = $this->upload->data();
-           
+			
             // definimos a URL para download
-            $downloadPath = $folder."/".$data['dadosArquivo']['file_name'];
+			$downloadPath = $folder."/".$data['dadosArquivo']['file_name'];
             // passando para o array '$data'
 			$data = $downloadPath;
 
@@ -177,12 +172,13 @@ class Cadastro extends CI_Controller {
 		}
 	}
 
-       
-	 // Método que fará o download do arquivo
-	public function Download(){
-		
-		// falta terminar para receber dinamicamente o parametro
-        	force_download('./uploads/'.$urldownload ,null);
 	
+	 // Método que fará o download do arquivo
+	
+	public function Download(){
+		$arquivo = $_GET["arquivo"];
+		// falta terminar para receber dinamicamente o parametro
+		force_download('./uploads/'.$arquivo ,null);
+		
 	}
 }

@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Submissão</title>
-	<link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>/assets/bootstrap/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<div class="container">
@@ -20,8 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<? endif; ?>
 		<div class="col-md-12">
 			<div class="row">
-				<a class="btn btn-success" href="../../../../home">Home</a>
-				<a class="btn btn-success" href="../../../../submissao/cadastro/create">Novo Cadastro</a>
+				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>
+				<a class="btn btn-success" href="<?= base_url(); ?>/submissao/cadastro/create">Novo Cadastro</a>
 			</div>
 
 			<div class="row">
@@ -48,10 +48,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<td><?= $submissao->status_sub ?></td>
 
 										<td>
-											<a  href="../../../../submissao/cadastro/download/" >Download</a>
+											<a  href="<?= base_url(); ?>/submissao/cadastro/download?arquivo=<?= $submissao->arquivo ?>">Download</a>
 											|
-											<a  href="../../../../submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
-											| <a href="../../../../submissao/home" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
+											<a  href="<?= base_url(); ?>/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
+											| <a href="#" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
 										</tr>
 									<? endforeach; ?>
 								</tbody>
@@ -79,8 +79,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
-			<script src="../assets/js/jquery.js"></script>
-			<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+			<script src="<?= base_url(); ?>/assets/js/jquery.js"></script>
+			<script src="<?= base_url(); ?>/assets/bootstrap/js/bootstrap.min.js"></script>
 
 			<script>
 
@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
-						document.location.href = "../../../submissao/cadastro/delete/"+id;
+						document.location.href = "<?= base_url(); ?>/submissao/cadastro/delete/"+id;
 					});	
 
 				});
