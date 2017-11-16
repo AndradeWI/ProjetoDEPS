@@ -14,6 +14,8 @@ class Home extends CI_Controller {
 		$this->twig->display('home');
 	}
 
+	
+
 
 }
 
