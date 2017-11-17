@@ -82,12 +82,17 @@ class Cadastro extends CI_Controller {
 		$isbn = $this->input->post('isb');
 		$submissao = $this->m_submissoes->busca($isbn);
 
-		if (($this->form_validation->run() == FALSE)|| ($submissao->num_rows() > 0 ) ) {
-			$variaveis['titulo'] = 'Novo Registro';
+		$id = $this->input->post('id');
+
+		if (($this->form_validation->run() == FALSE)|| ($submissao->num_rows() > 0 ) && $id == null) {
+			$variaveis['titulo'] = 'Edição de Registro';
+			$variaveis['isbn'] = $isbn;
+			$variaveis['id_submissao'] = $id;
 			$variaveis['mensagem'] = 'Isbn já está cadastrado!';
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$this->load->view('submissao/v_cadastro', $variaveis);
-		} else {
+		}
+		else {
 			$id = $this->input->post('id');
 			$this->upload->do_upload('arquivo');
             //se correu tudo bem, recuperamos os dados do arquivo

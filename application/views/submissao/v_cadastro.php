@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container">
 		<h1 class="text-center"><?= $titulo ?></h1>
-		<? if($mensagem != null): ?>
+		<? if($mensagem != null && $isbn != null && $id != null): ?>
 			<div class="alert alert-danger text-center">
 				<?= $mensagem; ?>
 			</div>
@@ -41,11 +41,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<? if($id_submissao == null): ?>
 
+					<? if($id_submissao == null): ?>
 						<div class="form-group">
 							<label for="isb">Isbn</label><span class="erro"><?php echo form_error('isb') ?  : ''; ?></span>
 							<input type="number" name="isb" id="isb" class="form-control" value="<?= set_value('isb') ? : (isset($isb) ? $isb : '') ?>" autofocus='true' />
+						</div>
+					<? endif; ?>
+					<? if($id_submissao != null): ?>
+						<div class="form-group">
+							<input type='hidden' name="isb" id="isb" class="form-control" value="<?= set_value('isb') ? : (isset($isb) ? $isb : '') ?>" autofocus='true' />
 						</div>
 					<? endif; ?>
 					<div class="form-group">
