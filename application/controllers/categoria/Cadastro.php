@@ -11,7 +11,7 @@ class Cadastro extends CI_Controller {
 	public function create()
 	{
 		$variaveis['titulo'] = 'Novo Cadastro';
-		$this->load->view('categoria/v_cadastro', $variaveis);
+		$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 	}
 	/**
 	 * Salva o registro no banco de dados.
@@ -43,7 +43,7 @@ class Cadastro extends CI_Controller {
 		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 ) ) {
 			$variaveis['titulo'] = 'Novo Registro';
 			$variaveis['mensagem'] = 'Categoria já está cadastrada!';
-			$this->load->view('categoria/v_cadastro', $variaveis);
+			$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 		} else {
 			
 			$id = $this->input->post('id');
@@ -57,10 +57,10 @@ class Cadastro extends CI_Controller {
 			if ($this->m_categorias->store($dados, $id)) {
 				$variaveis['categorias'] = $this->m_categorias->get();
 				$variaveis['mensagem'] = "Dados gravados com sucesso!";
-				$this->load->view('categoria/v_home', $variaveis);
+				$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
-				$this->load->view('errors/html/v_erro', $variaveis);
+				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
 			
 		}
@@ -83,10 +83,10 @@ class Cadastro extends CI_Controller {
 				$variaveis['id'] = $categoria->row()->id_categoria;
 				$variaveis['nome'] = $categoria->row()->nome_categoria;
 				$variaveis['descricao'] = $categoria->row()->descricao_categoria;
-				$this->load->view('categoria/v_cadastro', $variaveis);
+				$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Registro não encontrado." ;
-				$this->load->view('errors/html/v_erro', $variaveis);
+				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
 			
 		}
@@ -102,14 +102,14 @@ class Cadastro extends CI_Controller {
 		if ($categoria->num_rows() > 0) {
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$variaveis['restricao'] = "Categoria não pode ser excluida!";
-			$this->load->view('categoria/v_home', $variaveis);
+			$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 			
 		}
 		else{
 			$this->m_categorias->delete($id);
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
-			$this->load->view('categoria/v_home', $variaveis);
+			$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 		}
 	}
 }

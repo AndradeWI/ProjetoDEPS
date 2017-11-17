@@ -68,10 +68,10 @@
         </ul>
 
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="col-sm-9 col-md-offset-2 col-md-10 main">
 
         <div class="row placeholders">
-          <div id="contents"><?= $contents ?></div>
+          <div class="container" id="contents"><?= $contents ?></div>
         </div>
       </div>
     </div>

@@ -6,6 +6,6 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		
-		$this->twig->display('home');
+		$this->template->load('templating/base', 'home');
 	}
 }

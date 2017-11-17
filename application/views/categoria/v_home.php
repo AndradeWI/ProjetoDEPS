@@ -1,17 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="pt-br">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Categoria</title>
-	<link rel="stylesheet" href="<?= base_url(); ?>/assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?= base_url(); ?>/assets/bootstrap/css/bootstrap-theme.min.css">
-</head>
-<body>
+
 	<div class="container">
+        <div class="col-md-10">
 		<h1 class="text-center">Categoria</h1>
 		<? if($mensagem != null): ?>
 			<div class="alert alert-success text-center">
@@ -23,7 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?= $restricao; ?>
 			</div>
 		<? endif; ?>
-		<div class="col-md-12">
+        </div>
+		<div class="col-md-10">
 			<div class="row">
 				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>
 				<a class="btn btn-success" href="<?= base_url(); ?>categoria/cadastro/create">Novo Cadastro</a>
@@ -106,6 +96,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					});					
 				});
 			</script>
-
-		</body>
-		</html>

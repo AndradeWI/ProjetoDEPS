@@ -13,6 +13,6 @@ class Home extends CI_Controller {
 	{
 		$variaveis['mensagem'] = null;
 		$variaveis['categorias'] = $this->m_categorias->get();
-		$this->load->view('categoria/v_home', $variaveis);
+		$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 	}
 }
