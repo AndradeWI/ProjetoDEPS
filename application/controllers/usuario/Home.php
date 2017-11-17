@@ -10,8 +10,7 @@ class Home extends CI_Controller {
 		// session_start inicia a sessão
 		session_start();
 		$_SESSION['papel'] = $papel;		
-		//redirect('home/', 'refresh');
-		$this->twig->display('home');
+		redirect("home");
 	}
 
 	

@@ -42,19 +42,32 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          
           <a class="navbar-brand" href="home">Editora Report</a>
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="usuario/home/login/gerente">Gerente</a></li>
+           <!-- <li><a href="usuario/home/login/gerente">Gerente</a></li>
            <li><a href="usuario/home/login/editor">Editor</a></li>
-           <li><a href="usuario/home/login/autor">Autor</a></li>
+           <li><a href="usuario/home/login/autor">Autor</a></li> -->
+          <li>
+            <div class="dropdown" style="margin-top: 8px;">
+               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Entrar como
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Gerente</a></li>
+                        <li><a href="#">Editor</a></li>
+                        <li><a href="#">Autor</a></li>
+                    </ul>
+            </div>
+          </li>
            <li>|</li>
            <li><a href="categoria/home">Categoria</a></li>
            <li><a href="submissao/home">Submissão</a></li>
 
          </ul>
-         <!-- .... -->
+        
       </div>
     </div>
   </nav>
@@ -63,12 +76,20 @@
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-          
+          <span style="color: #aaa; margin-left: 10px;">| <span style="color: #337ab7;">
+          <?php
+                if (isset($_SESSION["papel"])) {
+                    echo $_SESSION["papel"];
+                } else {
+                    echo "Sem login";
+                }
+          ?>
+          </span> |</span>
           <div id="content-menu"><?= $menu ?></div>
         </ul>
 
       </div>
-      <div class="col-sm-9 col-md-offset-2 col-md-10 main">
+      <div class="col-sm-9 col-md-offset-1 col-md-10 main">
 
         <div class="row placeholders">
           <div class="container" id="contents"><?= $contents ?></div>
