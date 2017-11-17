@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container">
 		<h1 class="text-center"><?= $titulo ?></h1>
-		<? if($mensagem != null): ?>
+		<? if($mensagem != null && $nome != null): ?>
 			<div class="alert alert-danger text-center">
 				<?= $mensagem; ?>
 			</div>
