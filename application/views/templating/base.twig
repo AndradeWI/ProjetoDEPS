@@ -54,9 +54,9 @@
            <li><a href="submissao/home">Submissão</a></li>
 
          </ul>
-         <form class="navbar-form navbar-right">
-          <input type="text" class="form-control" placeholder="Search2...">
-        </form>
+         {% if papel %}
+         <label>Logado | {{ papel }} |</label>
+         {% endif %}
       </div>
     </div>
   </nav>
