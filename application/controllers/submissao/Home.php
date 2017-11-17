@@ -13,6 +13,6 @@ class Home extends CI_Controller {
 	{
 		$variaveis['mensagem'] = null;
 		$variaveis['submissoes'] = $this->m_submissoes->get();
-		$this->load->view('submissao/v_home', $variaveis);
+		$this->template->load('templating/base', 'submissao/v_home', $variaveis);
 	}
 }

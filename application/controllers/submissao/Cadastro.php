@@ -12,7 +12,7 @@ class Cadastro extends CI_Controller {
 	{
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$variaveis['categorias'] = $this->m_categorias->get();
-		$this->load->view('submissao/v_cadastro', $variaveis);
+		$this->template->load('templating/base', 'submissao/v_cadastro', $variaveis);
 	}
 	/**
 	 * Salva o registro no banco de dados.
@@ -86,7 +86,7 @@ class Cadastro extends CI_Controller {
 			$variaveis['titulo'] = 'Novo Registro';
 			$variaveis['mensagem'] = 'Isbn já está cadastrado!';
 			$variaveis['categorias'] = $this->m_categorias->get();
-			$this->load->view('submissao/v_cadastro', $variaveis);
+			$this->template->load('templating/base', 'submissao/v_cadastro', $variaveis);
 		} else {
 			$id = $this->input->post('id');
 			$this->upload->do_upload('arquivo');
@@ -115,10 +115,10 @@ class Cadastro extends CI_Controller {
 			if ($this->m_submissoes->store($dados, $id)) {
 				$variaveis['submissoes'] = $this->m_submissoes->get();
 				$variaveis['mensagem'] = "Dados gravados com sucesso!";
-				$this->load->view('submissao/v_home', $variaveis);
+				$this->template->load('templating/base', 'submissao/v_home', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
-				$this->load->view('errors/html/v_erro', $variaveis);
+				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
 
 		}
@@ -150,10 +150,10 @@ class Cadastro extends CI_Controller {
 				$variaveis['sinopse'] = $submissao->row()->sinopse;
 
 				$variaveis['categorias'] = $this->m_categorias->get();
-				$this->load->view('submissao/v_cadastro', $variaveis);
+				$this->template->load('templating/base', 'submissao/v_cadastro', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Registro não encontrado." ;
-				$this->load->view('errors/html/v_erro', $variaveis);
+				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
 			
 		}
@@ -168,7 +168,7 @@ class Cadastro extends CI_Controller {
 		if ($this->m_submissoes->delete($id)) {
 			$variaveis['submissoes'] = $this->m_submissoes->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
-			$this->load->view('submissao/v_home', $variaveis);
+			$this->template->load('templating/base', 'submissao/v_home', $variaveis);
 		}
 	}
 
