@@ -55,7 +55,7 @@
 			</div>
 			<div class="row"><hr></div>
 			<div class="row">
-				<a  href="<?= base_url(); ?>/submissao/home">Voltar</a>
+				<a  href="<?= base_url(); ?>submissao/home">Voltar</a>
 			</div>
 		</div>	
 	</div>
