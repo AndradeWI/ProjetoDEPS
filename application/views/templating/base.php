@@ -48,17 +48,15 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-           <!-- <li><a href="usuario/home/login/gerente">Gerente</a></li>
-           <li><a href="usuario/home/login/editor">Editor</a></li>
-           <li><a href="usuario/home/login/autor">Autor</a></li> -->
+           <!-- -->
           <li>
             <div class="dropdown" style="margin-top: 8px;">
                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Entrar como
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Gerente</a></li>
-                        <li><a href="#">Editor</a></li>
-                        <li><a href="#">Autor</a></li>
+                       <li><a href="usuario/home/login/gerente">Gerente</a></li>
+                       <li><a href="usuario/home/login/editor">Editor</a></li>
+                       <li><a href="usuario/home/login/autor">Autor</a></li>
                     </ul>
             </div>
           </li>

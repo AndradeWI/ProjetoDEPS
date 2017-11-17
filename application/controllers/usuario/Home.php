@@ -9,8 +9,10 @@ class Home extends CI_Controller {
 	
 		// session_start inicia a sessão
 		session_start();
-		$_SESSION['papel'] = $papel;		
-		redirect("home");
+		$_SESSION['papel'] = $papel;
+        
+		redirect('/', 'location');
+        //$this->template->load('templating/base', 'home');
 	}
 
 	
