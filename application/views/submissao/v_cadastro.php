@@ -8,7 +8,7 @@
                 </div>
             <? endif; ?>
 			<div class="row">
-				<form method="post" action="<?= base_url(); ?>/submissao/cadastro/store" enctype="multipart/form-data">
+				<form method="post" action="/submissao/cadastro/store" enctype="multipart/form-data">
 
 					<div class="form-group">
 						<label for="titulo_submissao">Título</label><span style="color: #f00;"><?php echo form_error('titulo_submissao') ?  : ''; ?></span>
@@ -55,7 +55,7 @@
 			</div>
 			<div class="row"><hr></div>
 			<div class="row">
-				<a  href="<?= base_url(); ?>submissao/home">Voltar</a>
+				<a  href="/submissao/home">Voltar</a>
 			</div>
 		</div>	
 	</div>
