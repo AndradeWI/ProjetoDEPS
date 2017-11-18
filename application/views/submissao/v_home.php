@@ -8,8 +8,8 @@
                 </div>
             <? endif; ?>
 			<div class="row">
-				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>
-				<a class="btn btn-success" href="<?= base_url(); ?>/submissao/cadastro/create">Novo Cadastro</a>
+				<a class="btn btn-success" href="/submissao/home">Home</a>
+				<a class="btn btn-success" href="/submissao/cadastro/create">Novo Cadastro</a>
 			</div>
 
 			<div class="row">
@@ -36,9 +36,9 @@
 										<td><?= $submissao->status_sub ?></td>
 
 										<td>
-											<a  href="<?= base_url(); ?>/submissao/cadastro/download?arquivo=<?= $submissao->arquivo ?>">Download</a>
+											<a  href="/submissao/cadastro/download?arquivo=<?= $submissao->arquivo ?>">Download</a>
 											|
-											<a  href="<?= base_url(); ?>/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
+											<a  href="/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
 											| <a href="#" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
 										</tr>
 									<? endforeach; ?>
@@ -93,7 +93,7 @@
 
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
-						document.location.href = "<?= base_url(); ?>/submissao/cadastro/delete/"+id;
+						document.location.href = "/submissao/cadastro/delete/"+id;
 					});	
 
 				});
