@@ -49,8 +49,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
            <!-- -->
-           <li><a href="categoria/home">Categoria</a></li>
-           <li><a href="submissao/home">Submissão</a></li>
+           <li><a href="/categoria/home">Categoria</a></li>
+           <li><a href="/submissao/home">Submissão</a></li>
 
          </ul>
         
@@ -73,9 +73,9 @@
                         <? } ?>
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                           <li><a href="usuario/home/login/gerente">Gerente</a></li>
-                           <li><a href="usuario/home/login/editor">Editor</a></li>
-                           <li><a href="usuario/home/login/autor">Autor</a></li>
+                           <li><a href="/usuario/home/login/gerente">Gerente</a></li>
+                           <li><a href="/usuario/home/login/editor">Editor</a></li>
+                           <li><a href="/usuario/home/login/autor">Autor</a></li>
                         </ul>
                     <a href="/" style="margin-left: 10px;">Sair</a>
                 </div>
@@ -85,7 +85,7 @@
         </ul>
 
       </div>
-      <div class="col-sm-9 col-md-offset-1 col-md-10 main">
+      <div class="col-sm-9 col-md-offset-2 col-md-10 main">
 
         <div class="row placeholders">
           <div class="container" id="contents"><?= $contents ?></div>

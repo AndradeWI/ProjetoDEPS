@@ -9,7 +9,7 @@
             <? endif; ?>
             
 			<div class="row">
-				<form method="post" action="<?= base_url(); ?>/categoria/cadastro/store">
+				<form method="post" action="/categoria/cadastro/store">
 					
 					<div class="form-group">
 						<label for="nome">Nome</label><span style="color:#f00;"><?php echo form_error('nome') ?  : ''; ?></span>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="row"><hr></div>
 			<div class="row">
-				<a  href="<?= base_url(); ?>categoria/home">Voltar</a>
+				<a  href="/categoria/home">Voltar</a>
 			</div>
 		</div>	
 	</div>
