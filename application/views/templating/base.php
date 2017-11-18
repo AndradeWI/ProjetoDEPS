@@ -49,18 +49,6 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
            <!-- -->
-          <li>
-            <div class="dropdown" style="margin-top: 8px;">
-               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Entrar como
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                       <li><a href="usuario/home/login/gerente">Gerente</a></li>
-                       <li><a href="usuario/home/login/editor">Editor</a></li>
-                       <li><a href="usuario/home/login/autor">Autor</a></li>
-                    </ul>
-            </div>
-          </li>
-           <li>|</li>
            <li><a href="categoria/home">Categoria</a></li>
            <li><a href="submissao/home">Submissão</a></li>
 
@@ -73,17 +61,27 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-          <span style="color: #aaa; margin-left: 10px;">| <span style="color: #337ab7;">
-          <?php
-                if (isset($_SESSION["papel"])) {
-                    echo $_SESSION["papel"];
-                } else {
-                    echo "Sem login";
-                }
-          ?>
-          </span> |</span>
-          <div id="content-menu"><?= $menu ?></div>
+        <ul class="nav nav-sidebar list-group">
+        
+            <li class="list-group-item">
+                <div class="dropdown" style="margin-top: 8px;">
+                    <?php
+                        if (isset($_SESSION["papel"])) { ?>
+                            <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" disabled><? echo $_SESSION["papel"]; ?>
+                        <? } else { ?>
+                            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Entrar como
+                        <? } ?>
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                           <li><a href="usuario/home/login/gerente">Gerente</a></li>
+                           <li><a href="usuario/home/login/editor">Editor</a></li>
+                           <li><a href="usuario/home/login/autor">Autor</a></li>
+                        </ul>
+                    <a href="/" style="margin-left: 10px;">Sair</a>
+                </div>
+                 
+            </li>
+          
         </ul>
 
       </div>
