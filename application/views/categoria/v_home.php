@@ -15,8 +15,8 @@
         </div>
 		<div class="col-md-10">
 			<div class="row">
-				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>
-				<a class="btn btn-success" href="<?= base_url(); ?>categoria/cadastro/create">Novo Cadastro</a>
+				<a class="btn btn-success" href="/categoria/home">Home</a>
+				<a class="btn btn-success" href="/categoria/cadastro/create">Novo Cadastro</a>
 			</div>
 
 			<div class="row">
@@ -92,7 +92,7 @@
 
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
-						document.location.href = "<?= base_url(); ?>/categoria/cadastro/delete/"+id;
+						document.location.href = "/categoria/cadastro/delete/"+id;
 					});					
 				});
 			</script>
