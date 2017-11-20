@@ -24,7 +24,7 @@ class Listar extends CI_Controller {
             $variaveis['submissoes'] = $this->m_submissoes->get();            
  
             //Carrega a View
-            $this->load->view('submissao/v_listar', $variaveis);
+            $this->template->load('templating/base', 'submissao/v_listar', $variaveis);
   	}
 
 /**
