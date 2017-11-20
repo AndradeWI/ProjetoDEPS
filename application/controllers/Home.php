@@ -5,7 +5,6 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data["nome"] = "Rafael";
-		$this->twig->display('home', $data);
+		$this->template->load('templating/base', 'home');
 	}
 }
