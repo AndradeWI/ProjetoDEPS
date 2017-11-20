@@ -8,9 +8,9 @@
                 </div>
             <? endif; ?>
 			<div class="row">
-				<a class="btn btn-success" href="/home">Home</a>
+				<a class="btn btn-success" href="/submissao/home">Home</a>
 				<a class="btn btn-success" href="/submissao/cadastro/create">Novo Cadastro</a>
-				<a class="btn btn-success" href="/submissao/listar/listar_sub">Listar Submissao</a>
+                <a class="btn btn-success" href="/submissao/listar/listar_sub">Listar Submissao</a>
 			</div>
 
 			<div class="row">
