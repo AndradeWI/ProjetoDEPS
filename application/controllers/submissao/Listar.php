@@ -56,12 +56,8 @@ class Listar extends CI_Controller {
 			} else {
 				$variaveis['mensagem'] = "Registro não encontrado." ;
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
-			}
-			
-		}
-		
+			}			
+		}		
 	}
-
-
 }
 

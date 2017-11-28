@@ -8,14 +8,15 @@
                 </div>
             <? endif; ?>
 			<div class="row">
-				<a class="btn btn-success" href="/submissao/home">Home</a>	
+				<a class="btn btn-success" href="<?= base_url(); ?>/home">Home</a>
+					
 			</div>
 
 			<div class="row">
-				<h3><?= $submissoes->num_rows(); ?> registro(s)</h3>
+				<h3><?= $usuarios->num_rows(); ?> registro(s)</h3>
 				
 				<div class="row">
-					<? if($submissoes->num_rows() > 0): ?>
+					<? if($usuarios->num_rows() > 0): ?>
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -27,13 +28,13 @@
 								</tr>
 							</thead>
 							<tbody>
-								<? foreach($submissoes->result() as $submissao): ?>
+								<? foreach($usuarios->result() as $usuario): ?>
 									<tr> 
-										<td><?= $submissao->id_submissao ?></td>
-										<td><?= $submissao->titulo ?></td>
-										<td><?= $submissao->data_submissao ?></td>
-										<td><?= $submissao->status_sub ?></td>
-										<td><a  href=" /submissao/listar/detalhes/<?= $submissao->id_submissao ?>">Detalhes</a></td>
+										<td><?= $usuario->id_usuario ?></td>
+										<td><?= $usuario->nome ?></td>
+										<td><?= $usuario->email ?></td>
+										<td><?= $usuario->papel ?></td>
+										<td><a  href=" /usuario/listar/detalhes/<?= $usuario->id_submissao ?>">Detalhes</a></td>
 										
 										</tr>
 									<? endforeach; ?>

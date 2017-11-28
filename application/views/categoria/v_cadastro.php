@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="col-md-6 col-md-offset-2">
             <h1 class="text-center"><?= $titulo ?></h1>
-            <? if($mensagem != null): ?>
+            <? if($mensagem != null && $nome != null): ?>
                 <div class="alert alert-danger text-center">
                     <?= $mensagem; ?>
                 </div>
@@ -17,7 +17,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="descricao">Dscrição</label><span style="color:#f00;"><?php echo form_error('descricao') ?  : ''; ?></span>
+						<label for="descricao">Descrição</label><span style="color:#f00;"><?php echo form_error('descricao') ?  : ''; ?></span>
 						<textarea name="descricao" id="descricao" class="form-control" /><?= set_value('descricao') ? : (isset($descricao) ? $descricao : ''); ?></textarea>
 					</div>
 					<div class="form-group text-right">

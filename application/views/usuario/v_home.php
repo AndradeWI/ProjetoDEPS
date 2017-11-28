@@ -1,47 +1,46 @@
 
 	<div class="container">
+        <div class="col-md-10">
+		<h1 class="text-center">Usuário</h1>
+		<? if($mensagem != null): ?>
+			<div class="alert alert-success text-center">
+				<?= $mensagem; ?>
+			</div>
+		<? endif; ?>
+		<? if($restricao != null): ?>
+			<div class="alert alert-danger text-center">
+				<?= $restricao; ?>
+			</div>
+		<? endif; ?>
+        </div>
 		<div class="col-md-10">
-            <h1 class="text-center">Submissão</h1>
-            <? if($mensagem != null): ?>
-                <div class="alert alert-success text-center">
-                    <?= $mensagem; ?>
-                </div>
-            <? endif; ?>
 			<div class="row">
-				<a class="btn btn-success" href="/submissao/home">Home</a>
-				<a class="btn btn-success" href="/submissao/cadastro/create">Novo Cadastro</a>
-                <a class="btn btn-success" href="/submissao/listar/listar_sub">Listar Submissao</a>
+				<a class="btn btn-success" href="/usuario/home">Home</a>
+				<a class="btn btn-success" href="/usuario/home/create">Novo Cadastro</a>
 
 			</div>
 
 			<div class="row">
-				<h3><?= $submissoes->num_rows(); ?> registro(s)</h3>
+				<h3><?= $usuarios->num_rows(); ?> registro(s)</h3>
 				
 				<div class="row">
-					<? if($submissoes->num_rows() > 0): ?>
+					<? if($usuarios->num_rows() > 0): ?>
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Código</th>
-									<th>Título</th>
-									<th>Data submetida</th>
-									<th>Status</th>
-									<th>Ações</th>
+									<th>Nome</th>
+									<th>E-mail</th>
+									<th>Papel</th>
 								</tr>
 							</thead>
 							<tbody>
-								<? foreach($submissoes->result() as $submissao): ?>
-									<tr> 
-										<td><?= $submissao->id_submissao ?></td>
-										<td><?= $submissao->titulo ?></td>
-										<td><?= $submissao->data_submissao ?></td>
-										<td><?= $submissao->status_sub ?></td>
-
-										<td>
-											<a  href="/submissao/cadastro/download?arquivo=<?= $submissao->arquivo ?>">Download</a>
-											|
-											<a  href="/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
-											| <a href="#" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
+								<? foreach($usuarios->result() as $usuario): ?>
+									<tr>
+										<td><?= $usuario->nome ?></td>
+										<td><?= $usuario->email ?></td>
+										<td><?= $usuario->papel ?></td>
+										<td><a  href="<?= base_url(); ?>/usuario/home/edit/<?= $usuario->id_usuario ?>" >Editar</a>
+											| <a href="#" class='confirma_exclusao' data-id="<?= $usuario->id_usuario ?>" data-nome="<?= $usuario->nome ?>" />Excluir</a></td>
 										</tr>
 									<? endforeach; ?>
 								</tbody>
@@ -74,9 +73,7 @@
 
 			<script>
 
-
-				$(function(){	
-
+				$(function(){
 					$('.confirma_exclusao').on('click', function(e) {
 						e.preventDefault();
 
@@ -95,10 +92,7 @@
 
 					$('#btn_excluir').click(function(){
 						var id = $('#modal_confirmation').data('id');
-						document.location.href = "/submissao/cadastro/delete/"+id;
-					});	
-
+						document.location.href = "/usuario/cadastro/delete/"+id;
+					});					
 				});
-
 			</script>
-

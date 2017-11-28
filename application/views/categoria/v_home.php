@@ -17,6 +17,7 @@
 			<div class="row">
 				<a class="btn btn-success" href="/categoria/home">Home</a>
 				<a class="btn btn-success" href="/categoria/cadastro/create">Novo Cadastro</a>
+				
 			</div>
 
 			<div class="row">

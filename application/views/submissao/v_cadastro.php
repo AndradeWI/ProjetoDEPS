@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="col-md-6 col-md-offset-2">
             <h1 class="text-center"><?= $titulo ?></h1>
-            <? if($mensagem != null): ?>
+            <? if($mensagem != null && $isbn != null && $id != null): ?>
                 <div class="alert alert-danger text-center">
                     <?= $mensagem; ?>
                 </div>
@@ -24,13 +24,11 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<? if($id_submissao == null): ?>
-
-						<div class="form-group">
-							<label for="isb">Isbn</label><span style="color: #f00;"><?php echo form_error('isb') ?  : ''; ?></span>
-							<input type="number" name="isb" id="isb" class="form-control" value="<?= set_value('isb') ? : (isset($isb) ? $isb : '') ?>" autofocus='true' />
-						</div>
-					<? endif; ?>
+			          <? if($id_submissao != null): ?> 
+			            <div class="form-group"> 
+			              <input type='hidden' name="isb" id="isb" class="form-control" value="<?= set_value('isb') ? : (isset($isb) ? $isb : '') ?>" autofocus='true' /> 
+			            </div> 
+			          <? endif; ?> 
 					<div class="form-group">
 						<label for="n_pagina">Nº de páginas</label><span class="erro"><?php echo form_error('n_pagina') ?  : ''; ?></span>
 						<input type="number" name="n_pagina" id="n_pagina" class="form-control" value="<?= set_value('isb') ? : (isset($n_pagina) ? $n_pagina : '') ?>" autofocus='true' />

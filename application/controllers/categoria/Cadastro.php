@@ -10,6 +10,7 @@ class Cadastro extends CI_Controller {
 	 */
 	public function create()
 	{
+		
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 	}
@@ -40,8 +41,9 @@ class Cadastro extends CI_Controller {
 
 		$nome = $this->input->post('nome');
 		$categoria = $this->m_categorias->busca($nome);
-		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 ) ) {
+		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 ) && $id == null ) {
 			$variaveis['titulo'] = 'Novo Registro';
+			$variaveis['nome'] = $nome;
 			$variaveis['mensagem'] = 'Categoria já está cadastrada!';
 			$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 		} else {
