@@ -13,7 +13,12 @@ class Home extends CI_Controller {
         $this->template->load('templating/base', 'home');
 	}
 
-	
+    //trocar nome para index depois
+	public function loginpage(){
+		
+        //Sem template, pois a pagina de login nao deve puxar ele
+        $this->load->view('usuario/login');
+	}
 
 
 }
