@@ -36,23 +36,30 @@
         <div class="panel panel-info">
             <div class="panel-heading">Sistema DEPS - Editora</div>
             <div class="panel-body">
-                <form id="loginform" class="form-horizontal" role="form">
+                
+                <?php if (isset($error) && $error != null) { ?>
+                <div class="alert alert-danger">
+                    <?= $error; ?>
+                </div>
+                <?php } ?>
+                
+                <form id="loginform" method="post" action="/usuario/login/validar" class="form-horizontal" role="form">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username ou email">                                        
+                                        <input id="login-username" type="text" class="form-control" name="login" value="" placeholder="Login">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="senha">
+                                        <input id="login-password" type="password" class="form-control" name="senha" placeholder="senha">
                                     </div>
                                     
                                 <center>
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-fblogin" style="width: 100%;" href="#" class="btn btn-primary">Fazer login</a>
+                                      <input type="submit" id="btn-fblogin" style="width: 100%;" class="btn btn-primary">
 
                                     </div>
                                 </div>

@@ -17,7 +17,8 @@ class Home extends CI_Controller {
 	public function loginpage(){
 		
         //Sem template, pois a pagina de login nao deve puxar ele
-        $this->load->view('usuario/login');
+        $data['error'] = null;
+        $this->load->view('usuario/login', $data);
 	}
 
 

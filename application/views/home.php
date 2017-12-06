@@ -1,9 +1,10 @@
 <h3> Seja bem vindo!</h3>
 <?php
-    if (isset($_SESSION["papel"])) {
+    var_dump($this->session->userdata);
+    echo "status: ".session_status();
+
 ?>
-<h5>Dashboard do <? echo $_SESSION["papel"]; ?></h5>
-<? } ?>
+
 
  
 
