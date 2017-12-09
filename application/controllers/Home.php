@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		if(!$this->session->userdata('logado')) {
-			redirect('usuario/login');	
+			$this->load->view('usuario/login');	
 		} else {
 			$this->template->load('templating/base', 'home');
 		}

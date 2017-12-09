@@ -28,6 +28,14 @@ class Login extends CI_Controller {
             $this->load->view('usuario/login', $data);
         }
     }
+
+    public function logoff() {
+        $this->session->unset_userdata('logado');
+        $this->session->unset_userdata('papel');
+        $this->session->unset_userdata('usuario');
+
+        redirect('home');
+    }
 	
 
 }

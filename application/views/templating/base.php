@@ -77,7 +77,7 @@
                            <li><a href="/usuario/home/login/editor">Editor</a></li>
                            <li><a href="/usuario/home/login/autor">Autor</a></li>
                         </ul>
-                    <a href="/" style="margin-left: 10px;">Sair</a>
+                    <a href="/usuario/login/logoff" style="margin-left: 10px;">Sair</a>
                 </div>
                  
             </li>
