@@ -1,4 +1,9 @@
-  <!DOCTYPE html>
+<?php
+  if(!$this->session->userdata('logado')) {
+    $this->load->view('usuario/login');
+  }
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
