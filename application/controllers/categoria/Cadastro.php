@@ -10,6 +10,7 @@ class Cadastro extends CI_Controller {
 	 */
 	public function create()
 	{
+
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 	}
@@ -20,7 +21,7 @@ class Cadastro extends CI_Controller {
 	 * @return view
 	 */
 	public function store(){
-		
+
 		$this->load->library('form_validation');
 		
 		$regras = array(
@@ -73,7 +74,7 @@ class Cadastro extends CI_Controller {
 	 * @return view
 	 */
 	public function edit($id = null){
-		
+
 		if ($id) {
 			
 			$categoria = $this->m_categorias->get($id);
@@ -98,6 +99,7 @@ class Cadastro extends CI_Controller {
 	 * @return boolean;
 	 */
 	public function delete($id = null) {
+
 		$categoria = $this->m_submissoes->FKCategoria($id);
 		if ($categoria->num_rows() > 0) {
 			$variaveis['categorias'] = $this->m_categorias->get();

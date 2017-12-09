@@ -54,8 +54,13 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
            <!-- -->
-           <li><a href="/categoria/home">Categoria</a></li>
-           <li><a href="/submissao/home">Submissão</a></li>
+          <?php
+              //Só mostra os botões para o gerente
+              if($this->session->userdata('papel') == 'Gerente') {
+          ?>
+            <li><a href="/categoria/home">Categoria</a></li>
+            <li><a href="/submissao/home">Submissão</a></li>
+          <?php } ?>
 
          </ul>
         

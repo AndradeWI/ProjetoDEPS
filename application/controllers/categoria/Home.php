@@ -11,6 +11,7 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
+
 		$variaveis['mensagem'] = null;
 		$variaveis['categorias'] = $this->m_categorias->get();
 		$this->template->load('templating/base', 'categoria/v_home', $variaveis);

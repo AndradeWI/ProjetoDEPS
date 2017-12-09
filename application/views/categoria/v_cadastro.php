@@ -1,3 +1,8 @@
+<?php 
+	if($this->session->userdata('papel') != 'Gerente') {
+		redirect('home');
+	}
+?>
 
 	<div class="container">
 		<div class="col-md-6 col-md-offset-2">
