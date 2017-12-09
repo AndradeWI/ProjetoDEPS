@@ -376,7 +376,7 @@ class CI_Session {
 				$sid_length += (int) ceil((160 % $bits) / $bits_per_character);
 				ini_set('session.sid_length', $sid_length);
 			}
-		}
+		} 
 
 		// Yes, 4,5,6 are the only known possible values as of 2016-10-27
 		switch ($bits_per_character)

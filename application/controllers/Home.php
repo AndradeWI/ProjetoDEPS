@@ -6,6 +6,10 @@ class Home extends CI_Controller {
     
 	public function index()
 	{
-		$this->template->load('templating/base', 'home');
+		if(!$this->session->userdata('logado')) {
+			redirect('usuario/login');	
+		} else {
+			$this->template->load('templating/base', 'home');
+		}
 	}
 }
