@@ -1,9 +1,4 @@
-<?php
-  if(!$this->session->userdata('logado')) {
-      redirect('home');	
-  }
-?>
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
