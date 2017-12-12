@@ -17,17 +17,17 @@
   <title>Dashboard Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../../../../includes/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>/includes/bootstrap/dist/css/bootstrap.min.css">
 
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="../../../../includes/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>/includes/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../../../../includes/bootstrap/assets/css/dashboard.css" rel="stylesheet">
-
+  <link href="<?= base_url(); ?>/includes/bootstrap/assets/css/dashboard.css" rel="stylesheet">
+ 
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="../../../../includes/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+  <script src="<?= base_url(); ?>/includes/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -58,8 +58,8 @@
               //Só mostra os botões para o gerente
               if($this->session->userdata('papel') == 'Gerente') {
           ?>
-            <li><a href="/categoria/home">Categoria</a></li>
-            <li><a href="/submissao/home">Submissão</a></li>
+            <li><a href="<?= base_url(); ?>/categoria/home">Categoria</a></li>
+            <li><a href="<?= base_url(); ?>/submissao/home">Submissão</a></li>
           <?php } ?>
 
          </ul>
@@ -101,7 +101,7 @@
           <div class="container" id="contents"><?= $contents ?></div>
         </div>
       </div>
-    </div>
+   </div>
   </div>
   <!-- Bootstrap core JavaScript ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->

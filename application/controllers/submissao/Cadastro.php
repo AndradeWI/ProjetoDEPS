@@ -41,7 +41,7 @@ class Cadastro extends CI_Controller {
 		$configUpload['upload_path']   = $path;
         // definimos - através da extensão - 
         // os tipos de arquivos suportados
-		$configUpload['allowed_types'] = 'pdf|doc';
+		$configUpload['allowed_types'] = 'pdf';
         // definimos que o nome do arquivo
         // será alterado para um nome criptografado
 		$configUpload['encrypt_name']  = TRUE;
@@ -94,9 +94,9 @@ class Cadastro extends CI_Controller {
 			$data['dadosArquivo'] = $this->upload->data();
 			
             // definimos a URL para download
-			$downloadPath = $folder."/".$data['dadosArquivo']['file_name'];
+			$downloadPath = "/submissao/cadastro/download?arquivo=".$folder."/".$data['dadosArquivo']['file_name'];
             // passando para o array '$data'
-			$data = $downloadPath;
+			$data = base_url().$downloadPath;
 
 			$dados = array(
 
@@ -175,10 +175,14 @@ class Cadastro extends CI_Controller {
 	
 	 // Método que fará o download do arquivo
 	
+
 	public function Download(){
 		$arquivo = $_GET["arquivo"];
-		// falta terminar para receber dinamicamente o parametro
-		force_download('./uploads/'.$arquivo ,null);
+		header("Content-type: application/pdf");
+		header("Content-Disposition: inline; ".'/uploads/'.$arquivo);
+		@readfile('./uploads/'.$arquivo);
+
+		//force_download('./uploads/'.$arquivo ,null);
 		
 	}
 }
