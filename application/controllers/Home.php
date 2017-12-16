@@ -22,4 +22,9 @@ class Home extends CI_Controller {
 		$variaveis['submissoes'] = $this->m_submissoes->buscaFKUsuario($this->session->userdata('usuario'));
 		$this->template->load('templating/base', 'home', $variaveis);
 	}
+
+	public function canceladas() {
+		$variaveis['submissoes'] = $this->m_submissoes->buscaPorStatus("Cancelado");
+		$this->template->load('templating/base', 'home', $variaveis);
+	}
 }

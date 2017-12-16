@@ -99,6 +99,15 @@
                 </li>
 
             <?php } ?>
+
+            <?php 
+                if($this->session->userdata('papel') == 'Gerente') {
+            ?>
+                <li class="list-group-item">
+                  <a href="/home/canceladas">Cancelamentos</a>
+                </li>
+
+            <?php } ?>
         </ul>
 
       </div>

@@ -55,7 +55,10 @@
 			<?php 
 				if($this->session->userdata('papel') == "Autor") { ?>
 					<a href="/submissao/cadastro/cancelamento/<?= $id_submissao ?>" class="btn btn-danger" style="float: right;" role="button">Solicitar cancelamento</a>
-				<?php } ?>
+				<?php } else if ($this->session->userdata('papel') == "Gerente") { 
+					if ($status_sub == "Cancelado") { ?>
+					<a href="/submissao/cadastro/delete/<?= $id_submissao ?>" class="btn btn-danger" style="float: right;" role="button">Excluir submissão</a>
+				<?php } } ?>
 			</div>
 		</div>	
 	</div>
