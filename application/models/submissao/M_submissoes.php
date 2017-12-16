@@ -44,11 +44,19 @@ class M_submissoes extends CI_Model {
 	}
 
 	public function buscaPorStatus($status){
+
+		$this->db->where('status_sub', $status);
 		
-		if ($id) {
-			$this->db->where('status_sub', $status);
-		}
 		$this->db->order_by("id_submissao", 'desc');
+		$subs = $this->db->get('submissao');
+		return $subs;
+	}
+
+	public function BuscaFKUsuario($fk = null){
+		
+		if ($fk) {
+			$this->db->where('fk_id_usuario', $fk);
+		}
 		return $this->db->get('submissao');
 	}
 

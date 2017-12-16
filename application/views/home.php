@@ -15,10 +15,12 @@
 
     </div>
     <hr>
+    <?php if(isset($mensagem)) { ?> 
+        <div class="alert alert-success"><?= $mensagem ?></div>
+    <? } ?>
 
     <?php 
-            if($this->session->userdata('papel') == 'Gerente') { ?>
-
+            if(isset($submissoes)) { ?>     
                 <div class="row" style="margin-left: 10px;">
                     <div class="row">
                         <? if($submissoes->num_rows() > 0): ?>
@@ -30,8 +32,12 @@
                                 </thead>
                                 <tbody>
                                     <? foreach($submissoes->result() as $submissao): ?>
-                                        <tr> 
-
+                                        <?php if ($submissao->status_sub == "Cancelado") { 
+                                            echo "<tr class='danger'>";
+                                        } else {
+                                            echo "<tr>";
+                                        }?>
+                                        
                                             <td><a  href="/submissao/listar/detalhes/<?= $submissao->id_submissao ?>"><?= $submissao->titulo ?></a></td>
                                             <td><?= $submissao->data_submissao ?></td>
                                             <td><?= $submissao->status_sub ?></td>
@@ -41,7 +47,7 @@
                                     </tbody>
                                 </table>
                             <? else: ?>
-                                <h4>Nenhum registro cadastrado.</h4>
+                                <div class="alert alert-warning">Nenhum registro encontrado.</div>
                             <? endif; ?>
                         </div>
                     </div>	

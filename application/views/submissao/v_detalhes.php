@@ -1,5 +1,5 @@
 <?php 
-	if($this->session->userdata('papel') != 'Gerente') {
+	if(!$this->session->userdata('logado')) {
 		redirect('home');
 	}
 ?>
@@ -52,7 +52,10 @@
 			</div>
 			<div class="row"><hr></div>
 			<div class="row">
-				<a  href="<?= base_url(); ?>submissao/home">Voltar</a>
+			<?php 
+				if($this->session->userdata('papel') == "Autor") { ?>
+					<a href="/submissao/cadastro/cancelamento/<?= $id_submissao ?>" class="btn btn-danger" style="float: right;" role="button">Solicitar cancelamento</a>
+				<?php } ?>
 			</div>
 		</div>	
 	</div>

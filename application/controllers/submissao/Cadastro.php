@@ -108,7 +108,7 @@ class Cadastro extends CI_Controller {
 				"disponivel" =>0,
 				"numero_paginas" => $this->input->post('n_pagina'),
 				"fk_id_categoria" =>  $this->input->post('categoria'),
-				"fk_id_usuario" => 1
+				"fk_id_usuario" => $this->session->userdata('usuario')
 
 
 			);
@@ -158,6 +158,16 @@ class Cadastro extends CI_Controller {
 			
 		}
 		
+	}
+
+	public function cancelamento($id) {
+		$submissao = $this->m_submissoes->get($id);
+
+		$dados["status_sub"] = "Cancelado";
+		if ($this->m_submissoes->store($dados, $id)) {
+			$variaveis['mensagem'] = "Solicitação enviada!";
+			$this->template->load('templating/base', 'home', $variaveis);
+		}		
 	}
 	/**
 	 * Função que exclui o registro através do id.

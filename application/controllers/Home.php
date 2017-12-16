@@ -13,8 +13,13 @@ class Home extends CI_Controller {
 				$variaveis['submissoes'] = $this->m_submissoes->buscaPorStatus("Submetido");
 				$this->template->load('templating/base', 'home', $variaveis);
 			} else {
-				$this->template->load('templating/base', 'home');	
+				$this->template->load('templating/base', 'home');
 			}
 		}
+	}
+
+	public function submissoes() {
+		$variaveis['submissoes'] = $this->m_submissoes->buscaFKUsuario($this->session->userdata('usuario'));
+		$this->template->load('templating/base', 'home', $variaveis);
 	}
 }

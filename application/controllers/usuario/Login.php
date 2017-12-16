@@ -34,6 +34,7 @@ class Login extends CI_Controller {
         $this->session->unset_userdata("papel");
         $this->session->unset_userdata("usuario");
         $this->session->sess_destroy();
+        setcookie("ci_session", "", time()-3600);
         redirect('home');
         session_write_close();
         exit;

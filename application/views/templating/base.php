@@ -91,7 +91,14 @@
                 </div>
                  
             </li>
-          
+            <?php 
+                if($this->session->userdata('papel') == 'Autor') {
+            ?>
+                <li class="list-group-item">
+                  <a href="/home/submissoes">Minhas submissões</a>
+                </li>
+
+            <?php } ?>
         </ul>
 
       </div>
