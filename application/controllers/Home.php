@@ -9,7 +9,12 @@ class Home extends CI_Controller {
 		if(!$this->session->userdata('logado')) {
 			$this->load->view('usuario/login');	
 		} else {
-			$this->template->load('templating/base', 'home');
+			if($this->session->userdata('papel') == 'Gerente') {
+				$variaveis['submissoes'] = $this->m_submissoes->buscaPorStatus("Submetido");
+				$this->template->load('templating/base', 'home', $variaveis);
+			} else {
+				$this->template->load('templating/base', 'home');	
+			}
 		}
 	}
 }

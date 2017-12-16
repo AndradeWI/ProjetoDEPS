@@ -43,6 +43,15 @@ class M_submissoes extends CI_Model {
 		return $this->db->get('submissao');
 	}
 
+	public function buscaPorStatus($status){
+		
+		if ($id) {
+			$this->db->where('status_sub', $status);
+		}
+		$this->db->order_by("id_submissao", 'desc');
+		return $this->db->get('submissao');
+	}
+
 	// Busca por isbn
 	public function busca($isbn = null){
 		
