@@ -1,11 +1,7 @@
-<?php 
-	if($this->session->userdata('papel') != 'Gerente') {
-		redirect('home');
-	}
-?> 
+
 	<div class="container">
 		<div class="col-md-6 col-md-offset-2">
-            <h1 class="text-center"><?= $titulo ?></h1>
+            <h1 class="text-center">Enviar submissão</h1>
             <? if($mensagem != null): ?>
                 <div class="alert alert-danger text-center">
                     <?= $mensagem; ?>
