@@ -6,7 +6,7 @@ class Home extends CI_Controller {
     
 	public function index()
 	{
-		if(!$this->session->userdata('logado')) {
+		if(!$this->session->userdata('logado') || is_null($this->session->userdata('logado'))) {
 			$this->load->view('usuario/login');	
 		} else {
 			if($this->session->userdata('papel') == 'Gerente') {
