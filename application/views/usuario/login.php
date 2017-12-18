@@ -12,17 +12,17 @@
   <title>Dashboard Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../../../../includes/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>/includes/bootstrap/dist/css/bootstrap.min.css">
 
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="../../../../includes/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>/includes/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../../../../includes/bootstrap/assets/css/dashboard.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>/includes/bootstrap/assets/css/dashboard.css" rel="stylesheet">
 
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="../../../../includes/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+  <script src="<?= base_url(); ?>/includes/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,7 +43,7 @@
                 </div>
                 <?php } ?>
                 
-                <form id="loginform" method="post" action="/usuario/login/validar" class="form-horizontal" role="form">
+                <form id="loginform" method="post" action="<?= base_url(); ?>/usuario/login/validar" class="form-horizontal" role="form">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -69,7 +69,7 @@
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                             Caso não tenha conta,  
-                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                        <a href="<?= base_url(); ?>usuario/cadastro/create" onClick="$('#loginbox').hide(); $('#signupbox').show()">
                                             Cadastre-se aqui
                                         </a>
                                         </div>
