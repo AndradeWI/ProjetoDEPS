@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 			$this->load->view('usuario/login');	
 		} else {
 			if($this->session->userdata('papel') == 'Gerente') {
-				$variaveis['submissoes'] = $this->m_submissoes->buscaPorStatus("Submetido");
+				$variaveis['submissoes'] = $this->m_submissoes->buscaPorStatus("Enviado");
 				$this->template->load('templating/base', 'home', $variaveis);
 			} else {
 				$this->template->load('templating/base', 'home');
@@ -20,6 +20,11 @@ class Home extends CI_Controller {
 
 	public function submissoes() {
 		$variaveis['submissoes'] = $this->m_submissoes->buscaFKUsuario($this->session->userdata('usuario'));
+		$this->template->load('templating/base', 'home', $variaveis);
+	}
+
+	public function meusdados() {
+		$variaveis['usuarios'] = $this->m_usuario->buscaFKUsuario($this->session->userdata('usuario'));
 		$this->template->load('templating/base', 'home', $variaveis);
 	}
 

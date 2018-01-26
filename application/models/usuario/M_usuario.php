@@ -42,8 +42,7 @@ class M_usuario extends CI_Model {
 			return $this->db->where('id_usuario', $id)->delete('usuario');
 		}
 	}
-		
-	
+
 	
 	/**
 	 * Recupera o registro do banco de dados
@@ -73,6 +72,8 @@ class M_usuario extends CI_Model {
         //if($get->num_rows > 0) return $get->row_array();
         //return array();
     }
+
+    
 
 
 }

@@ -45,11 +45,12 @@
 						<textarea name="sinopse" id="sinopse" class="form-control" /><?= set_value('sinopse') ? : (isset($sinopse) ? $sinopse : ''); ?></textarea>
 					</div>
 					<div class="form-group">
-						<label for="arquivo">Selecione um arquivo (pdf, doc)</label><span style="color: #f00;"><?php echo form_error('arquivo') ?  : ''; ?></span>
+						<label for="arquivo">Selecione um arquivo (pdf)</label><span style="color: #f00;"><?php echo form_error('arquivo') ?  : ''; ?></span>
 						<input type="file" name="arquivo" id="arquivo" class="form-control"  /><?= set_value('arquivo') ? : (isset($arquivo) ? $arquivo : ''); ?>
 					</div>
 
 					<div class="form-group text-right">
+						<a class="btn btn-danger " href="<?= base_url(); ?>submissao/home" role="button">Cancelar</a>
 						<input type="submit" value="Salvar" class="btn btn-success" />
 					</div>
 
@@ -57,9 +58,6 @@
 
 				</form>
 			</div>
-			<div class="row"><hr></div>
-			<div class="row">
-				<a  href="/submissao/home">Voltar</a>
-			</div>
+			
 		</div>	
 	</div>

@@ -23,7 +23,8 @@ class Cadastro extends CI_Controller {
 	public function store(){
 		
 		$this->load->library('form_validation');
-		$this->load->helper('date');
+		$this->load->helper('date');		
+		
 
 		 // definimos um nome aleatório para o diretório 
 		$folder = random_string('alpha');
@@ -41,7 +42,7 @@ class Cadastro extends CI_Controller {
 		$configUpload['upload_path']   = $path;
         // definimos - através da extensão - 
         // os tipos de arquivos suportados
-		$configUpload['allowed_types'] = 'pdf|doc';
+		$configUpload['allowed_types'] = 'pdf';
         // definimos que o nome do arquivo
         // será alterado para um nome criptografado
 		$configUpload['encrypt_name']  = TRUE;
@@ -81,27 +82,31 @@ class Cadastro extends CI_Controller {
 		$this->form_validation->set_rules($regras);
 		$isbn = $this->input->post('isb');
 		$submissao = $this->m_submissoes->busca($isbn);
-
-		if (($this->form_validation->run() == FALSE)|| ($submissao->num_rows() > 0 ) ) {
-			$variaveis['titulo'] = 'Novo Registro';
+		$id = $this->input->post('id');
+		
+		if ((($this->form_validation->run() == FALSE)|| ($submissao->num_rows() > 0 )) && ($id == null)) {
+			$variaveis['titulo'] = 'Edição de Registro';
+			$variaveis['isbn'] = $isbn;
+			$variaveis['id_submissao'] = $id;
 			$variaveis['mensagem'] = 'Isbn já está cadastrado!';
 			$variaveis['categorias'] = $this->m_categorias->get();
-			$this->template->load('templating/base', 'submissao/v_cadastro', $variaveis);
-		} else {
+			$this->template->load('templating/base','submissao/v_cadastro', $variaveis);
+		}
+		else {
 			$id = $this->input->post('id');
 			$this->upload->do_upload('arquivo');
             //se correu tudo bem, recuperamos os dados do arquivo
 			$data['dadosArquivo'] = $this->upload->data();
 			
-            // definimos a URL para download
-			$downloadPath = $folder."/".$data['dadosArquivo']['file_name'];
+           // definimos a URL para download
+			$downloadPath = "/submissao/cadastro/download?arquivo=".$folder."/".$data['dadosArquivo']['file_name'];
             // passando para o array '$data'
-			$data = $downloadPath;
+			$data = base_url().$downloadPath;
 
 			$dados = array(
 
 				"titulo" => $this->input->post('titulo_submissao'),
-				"status_sub" =>'Submetido',
+				"status_sub" =>'Enviado',
 				"isb" => $this->input->post('isb'),
 				"sinopse" => $this->input->post('sinopse'),
 				"arquivo" =>$data,
@@ -115,14 +120,16 @@ class Cadastro extends CI_Controller {
 			if ($this->m_submissoes->store($dados, $id)) {
 				$variaveis['submissoes'] = $this->m_submissoes->get();
 				$variaveis['mensagem'] = "Dados gravados com sucesso!";
-				$this->template->load('templating/base', 'submissao/v_home', $variaveis);
+				
+				$this->template->load('templating/base','submissao/v_home', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
-				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
+				$this->template->load('templating/base','errors/html/v_erro', $variaveis);
 			}
 
 		}
 	}
+
 
 	
 	/**
@@ -150,24 +157,14 @@ class Cadastro extends CI_Controller {
 				$variaveis['sinopse'] = $submissao->row()->sinopse;
 
 				$variaveis['categorias'] = $this->m_categorias->get();
-				$this->template->load('templating/base', 'submissao/v_cadastro', $variaveis);
+				$this->template->load('templating/base','submissao/v_cadastro', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Registro não encontrado." ;
-				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
+				$this->template->load('templating/base','errors/html/v_erro', $variaveis);
 			}
 			
 		}
 		
-	}
-
-	public function cancelamento($id) {
-		$submissao = $this->m_submissoes->get($id);
-
-		$dados["status_sub"] = "Cancelado";
-		if ($this->m_submissoes->store($dados, $id)) {
-			$variaveis['mensagem'] = "Solicitação enviada!";
-			$this->template->load('templating/base', 'home', $variaveis);
-		}		
 	}
 	/**
 	 * Função que exclui o registro através do id.
@@ -178,7 +175,7 @@ class Cadastro extends CI_Controller {
 		if ($this->m_submissoes->delete($id)) {
 			$variaveis['submissoes'] = $this->m_submissoes->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
-			$this->template->load('templating/base', 'submissao/v_home', $variaveis);
+			$this->template->load('templating/base','submissao/v_home', $variaveis);
 		}
 	}
 
@@ -187,8 +184,30 @@ class Cadastro extends CI_Controller {
 	
 	public function Download(){
 		$arquivo = $_GET["arquivo"];
-		// falta terminar para receber dinamicamente o parametro
-		force_download('./uploads/'.$arquivo ,null);
+		header("Content-type: application/pdf");
+		header("Content-Disposition: inline; ".'/uploads/'.$arquivo);
+		@readfile('./uploads/'.$arquivo);
+
+		//force_download('./uploads/'.$arquivo ,null);
 		
 	}
+
+	public function cancelamento($id) {
+		
+		$submissao = $this->m_submissoes->get($id);
+		
+
+		
+		$dados["status_sub"] = "Cancelado";
+		
+		if ($this->m_submissoes->store($dados, $id)) {
+			
+			$variaveis['mensagem'] = "Solicitação enviada!";
+			
+			$this->template->load('templating/base', 'home', $variaveis);
+			
+		}    
+		
+	}
+	
 }

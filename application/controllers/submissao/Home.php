@@ -12,7 +12,9 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$variaveis['mensagem'] = null;
-		$variaveis['submissoes'] = $this->m_submissoes->get();
+		
+		#$variaveis['submissoes'] = $this->m_submissoes->get();
+		$variaveis['submissoes'] = $this->m_submissoes->buscaFKUsuario($this->session->userdata('usuario'));
 		$this->template->load('templating/base', 'submissao/v_home', $variaveis);
 	}
 }

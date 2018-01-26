@@ -40,8 +40,9 @@ class Cadastro extends CI_Controller {
 		$this->form_validation->set_rules($regras);
 
 		$nome = $this->input->post('nome');
+		//$id = $this->input->post('id');
 		$categoria = $this->m_categorias->busca($nome);
-		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 ) ) {
+		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 )) {
 			$variaveis['titulo'] = 'Novo Registro';
 			$variaveis['mensagem'] = 'Categoria já está cadastrada!';
 			$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);

@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" href="includes/favicon.ico">
 
-  <title>Dashboard Template</title>
+  <title>Editora</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="<?= base_url(); ?>/includes/bootstrap/dist/css/bootstrap.min.css">
@@ -46,20 +46,6 @@
           <a class="navbar-brand" href="/home">Editora Report</a>
 
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-           <!-- -->
-          <?php
-              //Só mostra os botões para o gerente
-              if($this->session->userdata('papel') == 'Gerente') {
-          ?>
-            <li><a href="/categoria/home">Categoria</a></li>
-            <li><a href="/submissao/home">Submissão</a></li>
-          <?php } ?>
-
-         </ul>
-        
-      </div>
     </div>
   </nav>
 

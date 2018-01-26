@@ -26,15 +26,13 @@
 						<textarea name="descricao" id="descricao" class="form-control" /><?= set_value('descricao') ? : (isset($descricao) ? $descricao : ''); ?></textarea>
 					</div>
 					<div class="form-group text-right">
+						<a class="btn btn-danger " href="<?= base_url(); ?>categoria/home" role="button">Cancelar</a>
 						<input type="submit" value="Salvar" class="btn btn-success" />
 					</div>
 					<input type='hidden' name="id" value="<?= set_value('id') ? : (isset($id) ? $id : ''); ?>">
 					
 				</form>
 			</div>
-			<div class="row"><hr></div>
-			<div class="row">
-				<a  href="/categoria/home">Voltar</a>
-			</div>
+			
 		</div>	
 	</div>

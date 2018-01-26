@@ -30,14 +30,13 @@ class Login extends CI_Controller {
     }
 
     public function logoff() {
-        $this->session->unset_userdata("logado");
-        $this->session->unset_userdata("papel");
-        $this->session->unset_userdata("usuario");
-        $this->session->sess_destroy();
-        setcookie("ci_session", "", time()-3600);
-        redirect('home');
-        session_write_close();
-        exit;
+        $this->session->unset_userdata("logado"); 
+        $this->session->unset_userdata("papel"); 
+        $this->session->unset_userdata("usuario"); 
+        $this->session->sess_destroy(); 
+        redirect('home'); 
+        session_write_close(); 
+        exit; 
     }
 	
 

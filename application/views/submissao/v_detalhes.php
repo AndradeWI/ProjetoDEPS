@@ -44,7 +44,11 @@
 						<label for="sinopse">Sinopse</label><span class="erro"><?php echo form_error('sinopse') ?  : ''; ?></span>
 						<textarea name="sinopse" id="sinopse" class="form-control" disabled="disabled" /><?= set_value('sinopse') ? : (isset($sinopse) ? $sinopse : ''); ?></textarea>
 					</div>
-										
+
+					<div>
+						<a target="_blank" href="<?= $arquivo ?>">Download do Arquivo</a>	
+					</div>
+						
 
 					<input type='hidden' name="id" value="<?= $id_submissao ?>">
 

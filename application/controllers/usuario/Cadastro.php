@@ -56,11 +56,12 @@ class Cadastro extends CI_Controller {
 			$variaveis['titulo'] = 'Novo Registro';
 			$variaveis['email'] = $email;
 			$variaveis['mensagem'] = 'Usuário já está cadastrado!';
+			$variaveis['editoras'] = $this->m_editoras->get();
 			$this->load->view('usuario/v_cadastro', $variaveis);
 		} else {
 			
 			$id = $this->input->post('id');
-			$papel = 'usuario';
+			$papel = 'Autor';
 			$dados = array(
 				
 				"nome" => $this->input->post('nome'),
@@ -72,8 +73,8 @@ class Cadastro extends CI_Controller {
 			);
 			if ($this->m_usuario->store($dados, $id)) {
 				$variaveis['usuarios']   = $this->m_usuario->get();
-				$variaveis['mensagem'] = "Dados gravados com sucesso!";
-				$this->load->view('home', $variaveis);
+				$variaveis['mensagem'] = "Cadastro realizado com sucesso!";
+				$this->load->view('usuario/login', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
@@ -83,50 +84,5 @@ class Cadastro extends CI_Controller {
 	}
 
 	
-	/**
-	 * Chama o formulário com os campos preenchidos pelo registro selecioando.
-	 * @param $id do registro
-	 * @return view
-	 */
-	public function edit($id = null){
 
-		if ($id) {
-			
-			$categoria = $this->m_categorias->get($id);
-			
-			if ($categoria->num_rows() > 0 ) {
-				$variaveis['titulo'] = 'Edição de Registro';
-				$variaveis['id'] = $categoria->row()->id_categoria;
-				$variaveis['nome'] = $categoria->row()->nome_categoria;
-				$variaveis['descricao'] = $categoria->row()->descricao_categoria;
-				$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
-			} else {
-				$variaveis['mensagem'] = "Registro não encontrado." ;
-				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
-			}
-			
-		}
-		
-	}
-	/**
-	 * Função que exclui o registro através do id.
-	 * @param $id do registro a ser excluído.
-	 * @return boolean;
-	 */
-	public function delete($id = null) {
-
-		$categoria = $this->m_submissoes->FKCategoria($id);
-		if ($categoria->num_rows() > 0) {
-			$variaveis['categorias'] = $this->m_categorias->get();
-			$variaveis['restricao'] = "Categoria não pode ser excluida!";
-			$this->template->load('templating/base', 'categoria/v_home', $variaveis);
-			
-		}
-		else{
-			$this->m_categorias->delete($id);
-			$variaveis['categorias'] = $this->m_categorias->get();
-			$variaveis['mensagem'] = "Registro excluído com sucesso!";
-			$this->template->load('templating/base', 'categoria/v_home', $variaveis);
-		}
-	}
 }

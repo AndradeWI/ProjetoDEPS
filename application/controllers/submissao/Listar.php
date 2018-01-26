@@ -51,6 +51,7 @@ class Listar extends CI_Controller {
 				$variaveis['n_pagina'] = $submissao->row()->numero_paginas;
 				$variaveis['sinopse'] = $submissao->row()->sinopse;
 				$variaveis['status_sub'] = $submissao->row()->status_sub;
+				$variaveis['arquivo'] = $submissao->row()->arquivo;
 
 				$variaveis['categorias'] = $this->m_categorias->get();
 				$this->template->load('templating/base', 'submissao/v_detalhes', $variaveis);

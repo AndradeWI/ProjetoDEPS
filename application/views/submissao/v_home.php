@@ -12,9 +12,9 @@
                 </div>
             <? endif; ?>
 			<div class="row">
-				<a class="btn btn-success" href="/submissao/home">Home</a>
-				<a class="btn btn-success" href="/submissao/cadastro/create">Novo Cadastro</a>
-                <a class="btn btn-success" href="/submissao/listar/listar_sub">Listar Submissao</a>
+				<a class="btn btn-success" href="<?= base_url(); ?>home">Home</a>
+				<a class="btn btn-success" href="<?= base_url(); ?>/submissao/cadastro/create">Novo Cadastro</a>
+                <a class="btn btn-success" href="<?= base_url(); ?>/submissao/listar/listar_sub">Listar todas Submissões</a>
 			</div>
 
 			<div class="row">
@@ -32,7 +32,7 @@
 									<th>Ações</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="text-left">
 								<? foreach($submissoes->result() as $submissao): ?>
 									<tr> 
 										<td><?= $submissao->id_submissao ?></td>
@@ -41,9 +41,9 @@
 										<td><?= $submissao->status_sub ?></td>
 
 										<td>
-											<a  href="/submissao/cadastro/download?arquivo=<?= $submissao->arquivo ?>">Download</a>
+											<a target="_blank" href="<?= $submissao->arquivo ?>">Download</a>
 											|
-											<a  href="/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
+											<a  href="<?= base_url(); ?>/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
 											| <a href="#" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
 										</tr>
 									<? endforeach; ?>

@@ -1,3 +1,8 @@
+<?php 
+    if(!$this->session->userdata('logado')) {
+        redirect('home');
+    }
+?>
 <div class="container" style="padding-right: 15%;">
     <div class="row">
         <div class="col-md-6">
