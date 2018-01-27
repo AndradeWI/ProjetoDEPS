@@ -1,19 +1,18 @@
 <?php
-if (!$this->session->userdata('logado')) {
-    redirect('home');
-}
+    if (!$this->session->userdata('logado')) {
+        redirect('home');
+    }
 ?>
-<div class="container">
-    <div class="col-md-6 col-md-offset-2">
-        <h1 class="text-center"><?= $titulo ?></h1>
+
+        <h3><?= $titulo ?></h3>
         <? if ($mensagem != null && $email != null): ?>
             <div class="alert alert-danger text-center">
                 <?= $mensagem; ?>
             </div>
         <? endif; ?>
+        <hr />
 
-        <div class="row">
-            <form method="post" action="<?= base_url(); ?>usuario/manter/store">
+        <form method="post" action="<?= base_url(); ?>usuario/manter/store">
 
                 <div class="form-group">
                     <label for="nome">Nome</label><span
@@ -64,9 +63,7 @@ if (!$this->session->userdata('logado')) {
                 <input type='hidden' name="id" value="<?= set_value('id') ?: (isset($id) ? $id : ''); ?>">
                 <input type='hidden' name="id" value="<?= $id_usuario ?>">
             </form>
-        </div>
-    </div>
-</div>
+ 
 <!-- Bootstrap core JavaScript ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

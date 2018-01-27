@@ -1,38 +1,34 @@
 <?php
-if ($this->session->userdata('papel') != 'Gerente') {
-    redirect('home');
-}
+    if ($this->session->userdata('papel') != 'Gerente') {
+        redirect('home');
+    }
 ?>
-<div class="container">
-    <div class="col-md-10">
-        <h1 class="text-center">Categoria</h1>
-        <? if ($mensagem != null): ?>
-            <div class="alert alert-success text-center">
-                <?= $mensagem; ?>
-            </div>
-        <? endif; ?>
-        <? if ($restricao != null): ?>
-            <div class="alert alert-danger text-center">
-                <?= $restricao; ?>
-            </div>
-        <? endif; ?>
-    </div>
-    <div class="col-md-10">
         <div class="row">
-            <a class="btn btn-success" href="<?= base_url(); ?>home">Home</a>
-            <a class="btn btn-success" href="<?= base_url(); ?>/categoria/cadastro/create">Novo Cadastro</a>
+            <div class="col-md-5">
+                <h3>Categoria</h3>
+                <? if ($mensagem != null): ?>
+                    <div class="alert alert-success text-center">
+                        <?= $mensagem; ?>
+                    </div>
+                <? endif; ?>
+                <? if ($restricao != null): ?>
+                    <div class="alert alert-danger text-center">
+                        <?= $restricao; ?>
+                    </div>
+                <? endif; ?>
+            </div>
+            <div class="col-md-7" style="text-align: right;">
+                <div>
+                    <a class="btn btn-warning" href="<?= base_url(); ?>/categoria/cadastro/create">Novo Cadastro</a>
+                </div>
+            </div>
         </div>
 
-        <div class="row">
-            <h3><?= $categorias->num_rows(); ?> registro(s)</h3>
-
-            <div class="row">
+        <br>    
                 <? if ($categorias->num_rows() > 0): ?>
                     <table class="table table-striped">
                         <thead>
                         <tr>
-
-                            <th>Código</th>
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Ações</th>
@@ -41,23 +37,23 @@ if ($this->session->userdata('papel') != 'Gerente') {
                         <tbody class="text-left">
                         <? foreach ($categorias->result() as $categoria): ?>
                             <tr>
-                                <td><?= $categoria->id_categoria ?></td>
                                 <td><?= $categoria->nome_categoria ?></td>
                                 <td><?= $categoria->descricao_categoria ?></td>
-                                <td>
-                                    <a href="<?= base_url(); ?>/categoria/cadastro/edit/<?= $categoria->id_categoria ?>">Editar</a>
-                                    | <a href="#" class='confirma_exclusao' data-id="<?= $categoria->id_categoria ?>"
-                                         data-nome="<?= $categoria->nome_categoria ?>"/>Excluir</a></td>
+                                <td><a href="<?= base_url(); ?>/categoria/cadastro/edit/<?= $categoria->id_categoria ?>">
+                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    |                         
+                                    <a href="#" class='confirma_exclusao' data-id="<?= $categoria->id_categoria ?>"
+                                    data-nome="<?= $categoria->nome_categoria ?>"/><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a></td>
                             </tr>
                         <? endforeach; ?>
                         </tbody>
                     </table>
                 <? else: ?>
-                    <h4>Nenhum registro cadastrado.</h4>
+                    <div class="alert alert-dismissible alert-info">
+						Nenhum registro cadastrado
+					</div>
                 <? endif; ?>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="modal_confirmation">
         <div class="modal-dialog">
             <div class="modal-content">

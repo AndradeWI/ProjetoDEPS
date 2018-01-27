@@ -3,31 +3,28 @@
 		redirect('home');
 	}
 ?>
-<div class="container">
-	<div class="col-md-10">
-		<h1 class="text-center">Usuário</h1>
-		<? if($mensagem != null): ?>
-			<div class="alert alert-success text-center">
-				<?= $mensagem; ?>
-			</div>
-		<? endif; ?>
-		<? if($restricao != null): ?>
-			<div class="alert alert-danger text-center">
-				<?= $restricao; ?>
-			</div>
-		<? endif; ?>
-	</div>
-	<div class="col-md-10">
 		<div class="row">
-			<a class="btn btn-success" href="<?= base_url(); ?>home">Home</a>
-			<a class="btn btn-success" href="/usuario/manter/create">Novo Cadastro</a>
+            <div class="col-md-5">
+                <h3>Usuário</h3>
+                <? if ($mensagem != null): ?>
+                    <div class="alert alert-success text-center">
+                        <?= $mensagem; ?>
+                    </div>
+                <? endif; ?>
+                <? if ($restricao != null): ?>
+                    <div class="alert alert-danger text-center">
+                        <?= $restricao; ?>
+                    </div>
+                <? endif; ?>
+            </div>
+            <div class="col-md-7" style="text-align: right;">
+                <div>
+					<a class="btn btn-warning" href="/usuario/manter/create">Novo Cadastro</a>
+                </div>
+            </div>
+        </div>
 
-		</div>
-
-		<div class="row">
-			<h3><?= $usuarios->num_rows(); ?> registro(s)</h3>
-			
-			<div class="row">
+		<br>
 				<? if($usuarios->num_rows() > 0): ?>
 					<table class="table table-striped">
 						<thead>
@@ -46,19 +43,19 @@
 									<td><?= $usuario->email ?></td>
 									<td><?= $usuario->papel ?></td>
 									
-									<td><a  href="<?= base_url(); ?>usuario/manter/edit/<?= $usuario->id_usuario ?>" >Editar</a>
-										| <a href="#" class='confirma_exclusao' data-id="<?= $usuario->id_usuario ?>" data-nome="<?= $usuario->nome ?>" />Excluir</a>
+									<td><a href="<?= base_url(); ?>usuario/manter/edit/<?= $usuario->id_usuario ?>" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+										| <a href="#" class='confirma_exclusao' data-id="<?= $usuario->id_usuario ?>" data-nome="<?= $usuario->nome ?>" /><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 									</td>
 								</tr>
 								<? endforeach; ?>
 							</tbody>
 						</table>
 					<? else: ?>
-						<h4>Nenhum registro cadastrado.</h4>
+						<div class="alert alert-dismissible alert-info">
+							Nenhum registro cadastrado
+						</div>
 					<? endif; ?>
-				</div>
-			</div>	
-		</div>
+				
 		<div class="modal fade" id="modal_confirmation">
 			<div class="modal-dialog">
 				<div class="modal-content">

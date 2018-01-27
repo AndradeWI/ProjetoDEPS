@@ -37,6 +37,7 @@ if (!$this->session->userdata('logado')) {
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://use.fontawesome.com/d8d43e75c4.js"></script>
 </head>
 
 <body>
@@ -51,6 +52,7 @@ if (!$this->session->userdata('logado')) {
             <div class="collapse navbar-collapse" id="navbarColor01">
               
                 <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <?php
                     //Só mostra os botões para o gerente
                     if ($this->session->userdata('papel') == 'Gerente') {
@@ -68,13 +70,13 @@ if (!$this->session->userdata('logado')) {
     <div class="container">
       <div class="page-header" id="banner">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6" style="border: 1px solid #000">
+                <div class="col-lg-3 col-md-3 col-sm-6">
                     <ul class="nav nav-sidebar list-group">
                         <li class="list-group-item">
-                            <div style="margin-top: 8px;">
+                            <div style="margin-top: 8px;" class="list-group-item list-group-item-action disabled">
                                 <?php
                                 if (isset($_SESSION["papel"])) { ?>
-                                <button class="btn btn-warning " type="button" disabled><? echo $_SESSION["papel"]; ?>
+                                    Logado como: <strong><? echo $_SESSION["papel"]; ?></strong>
                                 <? } ?>
                                 
                                 <span class="caret"></span></button>              
@@ -125,14 +127,12 @@ if (!$this->session->userdata('logado')) {
 
                     </ul>   
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-6" style="border: 1px solid #000">
-                    <div class="container">
-                        <div class="col-sm-9 col-md-offset-2 col-md-10 main">
-                            <div class="row placeholders">
-                                <div class="container" id="contents" style="padding-top: 20px;"><?= $contents ?></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-9 col-md-9 col-sm-6">
+
+                        <div id="contents"
+                        style="padding-top: 20px;">
+                            <?= $contents ?></div>
+                    
                 </div>
             </div>
         </div>

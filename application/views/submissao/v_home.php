@@ -3,29 +3,37 @@
 		redirect('home');
 	}
 ?>
-	<div class="container">
-		<div class="col-md-10">
-            <h1 class="text-center">Submissão</h1>
-            <? if($mensagem != null): ?>
-                <div class="alert alert-success text-center">
-                    <?= $mensagem; ?>
+		<div class="row">
+            <div class="col-md-5">
+                <h3>Submissão</h3>
+                <? if ($mensagem != null): ?>
+                    <div class="alert alert-success text-center">
+                        <?= $mensagem; ?>
+                    </div>
+                <? endif; ?>
+                <? if ($restricao != null): ?>
+                    <div class="alert alert-danger text-center">
+                        <?= $restricao; ?>
+                    </div>
+                <? endif; ?>
+            </div>
+            <div class="col-md-7" style="text-align: right;">
+                <div>
+					<a class="btn btn-warning" href="<?= base_url(); ?>/submissao/cadastro/create">Novo Cadastro</a>
+					<a class="btn btn-warning" href="<?= base_url(); ?>/submissao/listar/listar_sub">Listar todas Submissões</a>
                 </div>
-            <? endif; ?>
-			<div class="row">
-				<a class="btn btn-success" href="<?= base_url(); ?>home">Home</a>
-				<a class="btn btn-success" href="<?= base_url(); ?>/submissao/cadastro/create">Novo Cadastro</a>
-                <a class="btn btn-success" href="<?= base_url(); ?>/submissao/listar/listar_sub">Listar todas Submissões</a>
-			</div>
+            </div>
+        </div>
 
-			<div class="row">
-				<h3><?= $submissoes->num_rows(); ?> registro(s)</h3>
+        <br> 
+
+
+				<!--<h3><//?= $submissoes->num_rows(); ?> registro(s)</h3>-->
 				
-				<div class="row">
 					<? if($submissoes->num_rows() > 0): ?>
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Código</th>
 									<th>Título</th>
 									<th>Data submetida</th>
 									<th>Status</th>
@@ -35,26 +43,25 @@
 							<tbody class="text-left">
 								<? foreach($submissoes->result() as $submissao): ?>
 									<tr> 
-										<td><?= $submissao->id_submissao ?></td>
 										<td><?= $submissao->titulo ?></td>
 										<td><?= $submissao->data_submissao ?></td>
 										<td><?= $submissao->status_sub ?></td>
 
 										<td>
-											<a target="_blank" href="<?= $submissao->arquivo ?>">Download</a>
+											<a target="_blank" href="<?= $submissao->arquivo ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
 											|
-											<a  href="<?= base_url(); ?>/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" >Editar</a>
-											| <a href="#" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/>Excluir</a></td>
+											<a  href="<?= base_url(); ?>/submissao/cadastro/edit/<?= $submissao->id_submissao ?>" ><i class="fa fa-pencil-square-o" aria-hidden="true"></a>
+											| <a href="#" class='confirma_exclusao' data-id="<?= $submissao->id_submissao ?>" data-nome="<?= $submissao->titulo ?>"/><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 										</tr>
 									<? endforeach; ?>
 								</tbody>
 							</table>
 						<? else: ?>
-							<h4>Nenhum registro cadastrado.</h4>
+							<div class="alert alert-dismissible alert-info">
+								Nenhum registro cadastrado
+							</div>
 						<? endif; ?>
-					</div>
-				</div>	
-			</div>
+		
 			<div class="modal fade" id="modal_confirmation">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -105,3 +112,11 @@
 
 			</script>
 
+
+
+
+
+
+
+
+				

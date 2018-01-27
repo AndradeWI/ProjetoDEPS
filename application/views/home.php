@@ -3,31 +3,30 @@
         redirect('home');
     }
 ?>
-<div class="container" style="padding-right: 15%;">
-    <div class="row">
-        <div class="col-md-6">
-            <h5 style="text-align: left;">Dashboard</h5>
+
+        <div class="row">
+            <div class="col-md-5">
+                <h3>Dashboard</h3>
+                <? if ($mensagem != null): ?>
+                    <div class="alert alert-success text-center">
+                        <?= $mensagem; ?>
+                    </div>
+                <? endif; ?>
+            </div>
+            <div class="col-md-7" style="text-align: right;">
+                <?php 
+                    if($this->session->userdata('papel') == 'Autor') { ?>
+                        <a href="/submissao/cadastro/create" role="button" class="btn btn-warning">Nova submissão</a>
+                <?php } ?>
+                
+            </div>
         </div>
 
-        <?php 
-            if($this->session->userdata('papel') == 'Autor') { ?>
-
-                <div class="col-md-6">
-                    <a href="/submissao/cadastro/create" role="button" style="float: right;" class="btn btn-success">Nova submissão</a>
-                </div>
-
-            <?php } ?>
-
-    </div>
     <hr>
-    <?php if(isset($mensagem)) { ?> 
-        <div class="alert alert-success"><?= $mensagem ?></div>
-    <? } ?>
 
-    <?php 
+
+        <?php 
             if(isset($submissoes)) { ?>     
-                <div class="row" style="margin-left: 10px;">
-                    <div class="row">
                         <? if($submissoes->num_rows() > 0): ?>
                             <table class="table table-striped" style="text-align: left;">
                                 <thead>
@@ -52,15 +51,11 @@
                                     </tbody>
                                 </table>
                             <? else: ?>
-                                <div class="alert alert-warning">Nenhum registro encontrado.</div>
+                                <div class="alert alert-dismissible alert-info">
+                                    Nenhum registro cadastrado
+                                </div>
                             <? endif; ?>
-                        </div>
-                    </div>	
-                </div>
-
-
             <?php } ?>
-</div>
 
 
 

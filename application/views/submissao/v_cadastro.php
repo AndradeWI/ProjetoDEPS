@@ -3,15 +3,16 @@
 		redirect('home');
 	}
 ?>
-	<div class="container">
-		<div class="col-md-6 col-md-offset-2">
-            <h1 class="text-center">Enviar submissão</h1>
+
+            <h3>Enviar submissão</h3>
             <? if($mensagem != null): ?>
                 <div class="alert alert-danger text-center">
                     <?= $mensagem; ?>
                 </div>
             <? endif; ?>
-			<div class="row">
+
+			<hr />	
+
 				<form method="post" action="/submissao/cadastro/store" enctype="multipart/form-data">
 
 					<div class="form-group">
@@ -57,7 +58,3 @@
 					<input type='hidden' name="id" value="<?= $id_submissao ?>">
 
 				</form>
-			</div>
-			
-		</div>	
-	</div>
