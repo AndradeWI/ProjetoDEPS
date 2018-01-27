@@ -97,10 +97,6 @@ if (!$this->session->userdata('logado')) {
                     <li class="list-group-item">
                         <a href="/home/submissoes">Minhas submissões</a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                            conta</a>
-                    </li>
                 <?php } ?>
 
                 <?php
@@ -109,29 +105,29 @@ if (!$this->session->userdata('logado')) {
                     <li class="list-group-item">
                         <a href="/home/canceladas">Cancelamentos</a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                            conta</a>
-                    </li>
                 <?php } ?>
 
+
                 <?php
-                if ($this->session->userdata('papel') == 'Usuario') {
+                if ($this->session->userdata('papel') == 'Usuario ' || $this->session->userdata('papel') == 'Autor') {
                     ?>
                     <li class="list-group-item">
                         <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                            conta</a>
+                            meus dados</a>
                     </li>
-                <?php } ?>
-
-                <?php
-                if ($this->session->userdata('papel') == 'Usuario' || $this->session->userdata('papel') == 'Autor') {
-                    ?>
+                    <li class="list-group-item">
+                        <a href="<?= base_url(); ?>usuario/manter/atualizarSenha/<?= $this->session->userdata('usuario') ?>">Alterar
+                            minha
+                            senha</a>
+                    </li>
                     <li class="list-group-item">
                         <a href="<?= base_url(); ?>usuario/manter/del/<?= $this->session->userdata('usuario') ?>">Cancelar
+                            minha
                             conta</a>
                     </li>
                 <?php } ?>
+
+
             </ul>
 
         </div>

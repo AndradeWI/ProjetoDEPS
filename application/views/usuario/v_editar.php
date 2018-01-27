@@ -56,7 +56,6 @@ if (!$this->session->userdata('logado')) {
 
                 <div class="form-group text-right">
                     <a class="btn btn-primary " href="<?= base_url(); ?>usuario/home" role="button">Cancelar</a>
-
                     <input type="submit" value="Salvar" class="btn btn-success"/>
                 </div>
 
