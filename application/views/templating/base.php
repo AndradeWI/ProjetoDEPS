@@ -17,19 +17,21 @@ if (!$this->session->userdata('logado')) {
     <title>Editora</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="<?= base_url(); ?>/includes/bootstrap/dist/css/bootstrap.min.css">
+    <!-- @@@ <link rel="stylesheet" href="<?= base_url(); ?>/includes/bootstrap/dist/css/bootstrap.min.css"> -->
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="<?= base_url(); ?>/includes/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<?= base_url(); ?>/includes/bootstrap/assets/css/dashboard.css" rel="stylesheet">
+    <!--<link href="<?= base_url(); ?>/includes/bootstrap/assets/css/dashboard.css" rel="stylesheet">-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
     <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="<?= base_url(); ?>/includes/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-xpQNcoacYF/4TKVs2uD3sXyaQYs49wxwEmeFNkOUgun6SLWdEbaCOv8hGaB9jLxt" crossorigin="anonymous">
+    <link href="<?= base_url(); ?>/assets/css/ajustes.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -39,110 +41,103 @@ if (!$this->session->userdata('logado')) {
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/home">Editora</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="navbar-brand" href="/home">Editora</a>
-
+            <div class="collapse navbar-collapse" id="navbarColor01">
+              
+                <ul class="nav navbar-nav ml-auto">
+                    <?php
+                    //Só mostra os botões para o gerente
+                    if ($this->session->userdata('papel') == 'Gerente') {
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="/usuario/home">Usuários</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/categoria/home">Categoria</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/submissao/home">Submissão</a></li>
+                    <?php } ?>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>/usuario/login/logoff" style="margin-left: 10px;">Logout</a></li>       
+                </ul>
+            </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <!-- -->
-                <?php
-                //Só mostra os botões para o gerente
-                if ($this->session->userdata('papel') == 'Gerente') {
-                    ?>
-                    <li><a href="/usuario/home">Usuários</a></li>
-                    <li><a href="/categoria/home">Categoria</a></li>
-                    <!--<li><a href="/home/submissoes">Submissão</a></li>-->
-                    <li><a href="/submissao/home">Submissão</a></li>
-                <?php } ?>
-
-            </ul>
-
-        </div>
-    </div>
-</nav>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar list-group">
-
-                <li class="list-group-item">
-                    <div style="margin-top: 8px;">
-                        <?php
-                        if (isset($_SESSION["papel"])) { ?>
-                        <button class="btn btn-warning " type="button" disabled><? echo $_SESSION["papel"]; ?>
-                            <? } else { ?>
-                            <button class="btn btn-info " type="button">Entrar
+    </nav>
+    
+    <div class="container">
+      <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6" style="border: 1px solid #000">
+                    <ul class="nav nav-sidebar list-group">
+                        <li class="list-group-item">
+                            <div style="margin-top: 8px;">
+                                <?php
+                                if (isset($_SESSION["papel"])) { ?>
+                                <button class="btn btn-warning " type="button" disabled><? echo $_SESSION["papel"]; ?>
                                 <? } ?>
-                                <span class="caret"></span></button>
+                                
+                                <span class="caret"></span></button>              
+                            </div>
+                        </li>
 
-                            <a href="<?= base_url(); ?>/usuario/login/logoff" style="margin-left: 10px;">Sair</a>
+                        <?php
+                        if ($this->session->userdata('papel') == 'Autor') {
+                            ?>
+                            <li class="list-group-item">
+                                <a href="/home/submissoes">Minhas submissões</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
+                                    conta</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php
+                        if ($this->session->userdata('papel') == 'Gerente') {
+                            ?>
+                            <li class="list-group-item">
+                                <a href="/home/canceladas">Cancelamentos</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
+                                    conta</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php
+                        if ($this->session->userdata('papel') == 'Usuario') {
+                            ?>
+                            <li class="list-group-item">
+                                <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
+                                    conta</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php
+                        if ($this->session->userdata('papel') == 'Usuario' || $this->session->userdata('papel') == 'Autor') {
+                            ?>
+                            <li class="list-group-item">
+                                <a href="<?= base_url(); ?>usuario/manter/del/<?= $this->session->userdata('usuario') ?>">Cancelar
+                                    conta</a>
+                            </li>
+                        <?php } ?>
+
+                    </ul>   
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-6" style="border: 1px solid #000">
+                    <div class="container">
+                        <div class="col-sm-9 col-md-offset-2 col-md-10 main">
+                            <div class="row placeholders">
+                                <div class="container" id="contents" style="padding-top: 20px;"><?= $contents ?></div>
+                            </div>
+                        </div>
                     </div>
-
-                </li>
-                <?php
-                if ($this->session->userdata('papel') == 'Autor') {
-                    ?>
-                    <li class="list-group-item">
-                        <a href="/home/submissoes">Minhas submissões</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                            conta</a>
-                    </li>
-                <?php } ?>
-
-                <?php
-                if ($this->session->userdata('papel') == 'Gerente') {
-                    ?>
-                    <li class="list-group-item">
-                        <a href="/home/canceladas">Cancelamentos</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                            conta</a>
-                    </li>
-                <?php } ?>
-
-                <?php
-                if ($this->session->userdata('papel') == 'Usuario') {
-                    ?>
-                    <li class="list-group-item">
-                        <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                            conta</a>
-                    </li>
-                <?php } ?>
-
-                <?php
-                if ($this->session->userdata('papel') == 'Usuario' || $this->session->userdata('papel') == 'Autor') {
-                    ?>
-                    <li class="list-group-item">
-                        <a href="<?= base_url(); ?>usuario/manter/del/<?= $this->session->userdata('usuario') ?>">Cancelar
-                            conta</a>
-                    </li>
-                <?php } ?>
-            </ul>
-
-        </div>
-        <div class="col-sm-9 col-md-offset-2 col-md-10 main">
-
-            <div class="row placeholders">
-                <div class="container" id="contents"><?= $contents ?></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 <!-- Bootstrap core JavaScript ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
