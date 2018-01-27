@@ -14,7 +14,7 @@ if (!$this->session->userdata('logado')) {
         <? endif; ?>
 
         <div class="row">
-            <form method="post" action="<?= base_url(); ?>usuario/manter/atualizarSenha/<?= $id_usuario ?>">
+            <form method="post" action="<?= base_url(); ?>usuario/manter/store">
                 <div class="form-group">
                     <label for="senha">Nova senha</label><span
                             style="color:#f00;"><?php echo form_error('senha') ?: ''; ?></span>
