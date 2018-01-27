@@ -66,27 +66,48 @@ class Manter extends CI_Controller
             $variaveis['editoras'] = $this->m_editoras->get();
             $this->template->load('templating/base', 'usuario/v_editar', $variaveis);
         } else {
+            if ($this->input->post('flag') != 1) {
+                $id = $this->input->post('id');
+                $papel = 'Autor';
+                $dados = array(
 
-            $id = $this->input->post('id');
-            $papel = 'Autor';
-            $dados = array(
+                    "nome" => $this->input->post('nome'),
+                    "email" => $this->input->post('email'),
+                    "papel" => $papel,
+                    "login" => $this->input->post('login'),
+                    "senha" => md5($this->input->post('senha')),
+                    "fk_id_editora" => $this->input->post('editora')
+                );
+                if ($this->m_usuario->store($dados, $id)) {
+                    $variaveis['usuarios'] = $this->m_usuario->get();
+                    $variaveis['mensagem'] = "Cadastro realizado com sucesso!";
+                    $this->template->load('templating/base', 'usuario/v_home', $variaveis);
+                } else {
+                    $variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
+                    $this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
+                }
+            } else {//Atualizar senha
+                $id = $this->input->post('id');
+                $papel = 'Autor';
+                $dados = array(
 
-                "nome" => $this->input->post('nome'),
-                "email" => $this->input->post('email'),
-                "papel" => $papel,
-                "login" => $this->input->post('login'),
-                "senha" => md5($this->input->post('senha')),
-                "fk_id_editora" => $this->input->post('editora')
-            );
-            if ($this->m_usuario->store($dados, $id)) {
-                $variaveis['usuarios'] = $this->m_usuario->get();
-                $variaveis['mensagem'] = "Cadastro realizado com sucesso!";
-                $this->template->load('templating/base', 'usuario/v_home', $variaveis);
-            } else {
-                $variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
-                $this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
+                    "nome" => $this->input->post('nome'),
+                    "email" => $this->input->post('email'),
+                    "papel" => $papel,
+                    "login" => $this->input->post('login'),
+                    "senha" => md5($this->input->post('senha')),
+                    "fk_id_editora" => $this->input->post('editora')
+                );
+                if ($this->m_usuario->store($dados, $id)) {
+                    $variaveis['usuarios'] = $this->m_usuario->get();
+                    $variaveis['mensagem'] = "Senha alterada com sucesso.";
+                    $variaveis['titulo'] = 'Alteração de senha';
+                    $this->template->load('templating/base', 'usuario/v_alterar_senha', $variaveis);
+                } else {
+                    $variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
+                    $this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
+                }
             }
-
         }
     }
 
@@ -153,14 +174,20 @@ class Manter extends CI_Controller
             $usuario = $this->m_usuario->get($id);
 
             if ($usuario->num_rows() > 0) {
-                //$ideditora = $usuario->row()->fk_id_editora;
-                //$editora = $this->m_editoras->get($ideditora);
+                $ideditora = $usuario->row()->fk_id_editora;
+                $editora = $this->m_editoras->get($ideditora);
 
-                $variaveis['titulo'] = 'Atualização de senha';
-
+                $variaveis['titulo'] = 'Alteração de senha';
+                $variaveis['id_usuario'] = $usuario->row()->id_usuario;
+                $variaveis['nome'] = $usuario->row()->nome;
+                $variaveis['id_editora_atual'] = $ideditora;
+                $variaveis['editora_atual'] = $editora->row()->editora;
+                $variaveis['email'] = $usuario->row()->email;
+                $variaveis['login'] = $usuario->row()->login;
+                $variaveis['papel'] = $usuario->row()->papel;
                 $variaveis['senha'] = $usuario->row()->senha;
 
-                //$variaveis['editoras'] = $this->m_editoras->get();
+                $variaveis['editoras'] = $this->m_editoras->get();
                 $this->template->load('templating/base', 'usuario/v_alterar_senha', $variaveis);
             } else {
                 $variaveis['mensagem'] = "Registro não encontrado.";
