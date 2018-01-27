@@ -29,7 +29,7 @@ if (!$this->session->userdata('logado')) {
                            value="<?= set_value('email') ?: (isset($email) ? $email : '') ?>" autofocus='true'/>
                 </div>
 
-                            
+
                 <input type="hidden" name="login" id="login" class="form-control"
                        value="<?= set_value('login') ?: (isset($login) ? $login : '') ?>" autofocus='true'/>
 
@@ -53,7 +53,6 @@ if (!$this->session->userdata('logado')) {
                     <a class="btn btn-primary " href="<?= base_url(); ?>usuario/home" role="button">Cancelar</a>
                     <input type="submit" value="Salvar" class="btn btn-success"/>
                 </div>
-
 
                 <input type='hidden' name="id" value="<?= set_value('id') ?: (isset($id) ? $id : ''); ?>">
                 <input type='hidden' name="id" value="<?= $id_usuario ?>">

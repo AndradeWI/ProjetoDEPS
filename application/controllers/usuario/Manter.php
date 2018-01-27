@@ -75,7 +75,7 @@ class Manter extends CI_Controller
                     "email" => $this->input->post('email'),
                     "papel" => $papel,
                     "login" => $this->input->post('login'),
-                    "senha" => md5($this->input->post('senha')),
+                    "senha" => $this->input->post('senha'),
                     "fk_id_editora" => $this->input->post('editora')
                 );
                 if ($this->m_usuario->store($dados, $id)) {

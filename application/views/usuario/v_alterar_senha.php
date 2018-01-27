@@ -20,7 +20,8 @@ if (!$this->session->userdata('logado')) {
                 <input type='hidden' name="email" value="<?= $email ?>">
                 <input type='hidden' name="login" value="<?= $login ?>">
                 <input type='hidden' name="editora" value="<?= $id_editora_atual ?>">
-                <input type="hidden" name="flag" value="1"><!--Apenas para o método identificar que esse é o alterar senha-->
+                <input type="hidden" name="flag" value="1">
+                <!--Apenas para o método identificar que esse é o alterar senha-->
                 <div class="form-group">
                     <label for="senha">Nova senha</label><span
                             style="color:#f00;"><?php echo form_error('senha') ?: ''; ?></span>
