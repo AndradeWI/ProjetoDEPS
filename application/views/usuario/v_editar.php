@@ -28,19 +28,13 @@
                            value="<?= set_value('email') ?: (isset($email) ? $email : '') ?>" autofocus='true'/>
                 </div>
 
-                <div class="form-group">
-                    <label for="login">Login</label><span
-                            style="color:#f00;"><?php echo form_error('login') ?: ''; ?></span>
-                    <input type="text" name="login" id="login" class="form-control"
-                           value="<?= set_value('login') ?: (isset($login) ? $login : '') ?>" autofocus='true'/>
-                </div>
 
-                <div class="form-group">
-                    <label for="senha">Senha</label><span
-                            style="color:#f00;"><?php echo form_error('senha') ?: ''; ?></span>
-                    <input type="password" name="senha" id="senha" class="form-control"
+                <input type="hidden" name="login" id="login" class="form-control"
+                           value="<?= set_value('login') ?: (isset($login) ? $login : '') ?>" autofocus='true'/>
+
+                <input type="hidden" name="senha" id="senha" class="form-control"
                            value="<?= set_value('senha') ?: (isset($senha) ? $senha : '') ?>" autofocus='true'/>
-                </div>
+
 
                 <div class="form-group">
                     <label for="editora">Editora</label><span

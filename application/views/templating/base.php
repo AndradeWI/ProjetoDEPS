@@ -84,7 +84,15 @@ if (!$this->session->userdata('logado')) {
                         </li>
 
                         <?php
-                        if ($this->session->userdata('papel') == 'Autor') {
+                        if ($this->session->userdata('papel') == 'Gerente') {
+                            ?>
+                            <li class="list-group-item">
+                                <a href="/home/canceladas">Cancelamentos</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php
+                        if ($this->session->userdata('papel') == 'Usuario' || $this->session->userdata('papel') == 'Autor') {
                             ?>
                             <li class="list-group-item">
                                 <a href="/home/submissoes">Minhas submissões</a>
@@ -93,38 +101,16 @@ if (!$this->session->userdata('logado')) {
                                 <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
                                     conta</a>
                             </li>
-                        <?php } ?>
-
-                        <?php
-                        if ($this->session->userdata('papel') == 'Gerente') {
-                            ?>
                             <li class="list-group-item">
-                                <a href="/home/canceladas">Cancelamentos</a>
+                                <a href="<?= base_url(); ?>usuario/manter/atualizarSenha/<?= $this->session->userdata('usuario') ?>">Alterar
+                                    minha
+                                    senha</a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                                    conta</a>
-                            </li>
-                        <?php } ?>
-
-                        <?php
-                        if ($this->session->userdata('papel') == 'Usuario') {
-                            ?>
-                            <li class="list-group-item">
-                                <a href="<?= base_url(); ?>usuario/manter/edit/<?= $this->session->userdata('usuario') ?>">Editar
-                                    conta</a>
-                            </li>
-                        <?php } ?>
-
-                        <?php
-                        if ($this->session->userdata('papel') == 'Usuario' || $this->session->userdata('papel') == 'Autor') {
-                            ?>
                             <li class="list-group-item">
                                 <a href="<?= base_url(); ?>usuario/manter/del/<?= $this->session->userdata('usuario') ?>">Cancelar
                                     conta</a>
                             </li>
                         <?php } ?>
-
                     </ul>   
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-6">
