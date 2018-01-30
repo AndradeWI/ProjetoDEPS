@@ -125,6 +125,12 @@ if (!$this->session->userdata('logado')) {
                             </li>
                         <?php } ?>
 
+                        <li class="list-group-item">
+                            <a href="/notificacao/home">Notificações</a>
+                            <span class="badge badge-primary badge-pill" style="float: right;">
+                            <!-- variavel $pendentes; -->1</span>
+                        </li>
+
                     </ul>   
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-6">
