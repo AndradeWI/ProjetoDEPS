@@ -10,7 +10,9 @@ class Manter extends CI_Controller {
 	 */
 	public function create()
 	{
-
+		$id_logado = $this->session->userdata('usuario');
+		$pendentes = $this->m_notificacao->getPendentes($id_logado);
+		$variaveis['pendentes'] = $pendentes;	
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$variaveis['editoras'] = $this->m_editoras->get();
 		$this->template->load('templating/base', 'usuario/v_editar', $variaveis);
@@ -61,6 +63,9 @@ class Manter extends CI_Controller {
 			$variaveis['id_usuario'] = $id;
 			$variaveis['mensagem'] = 'Usuário já está cadastrado!';
 			$variaveis['editoras'] = $this->m_editoras->get();
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base', 'usuario/v_editar', $variaveis);
 		} else {
 			
@@ -78,9 +83,15 @@ class Manter extends CI_Controller {
 			if ($this->m_usuario->store($dados, $id)) {
 				$variaveis['usuarios']   = $this->m_usuario->get();
 				$variaveis['mensagem'] = "Cadastro realizado com sucesso!";
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$this->template->load('templating/base', 'usuario/v_home', $variaveis);
 			} else {
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
 			
@@ -111,10 +122,15 @@ class Manter extends CI_Controller {
 				$variaveis['login'] = $usuario->row()->login;
 				$variaveis['papel'] = $usuario->row()->papel;
 				$variaveis['senha'] = $usuario->row()->senha;
-
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;
 				$variaveis['editoras'] = $this->m_editoras->get();
 				$this->template->load('templating/base','usuario/v_editar', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;
 				$variaveis['mensagem'] = "Registro não encontrado." ;
 				$this->template->load('templating/base','errors/html/v_erro', $variaveis);
 			}
@@ -132,6 +148,9 @@ class Manter extends CI_Controller {
 		if ($this->m_usuario->delete($id)) {
 			$variaveis['usuarios'] = $this->m_usuario->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;
 			$this->template->load('templating/base','usuario/v_home', $variaveis);
 		}
 	}

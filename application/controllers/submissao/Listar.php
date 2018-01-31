@@ -10,6 +10,9 @@ class Listar extends CI_Controller {
 	 */
 	public function create()
 	{
+		$id_logado = $this->session->userdata('usuario');
+		$pendentes = $this->m_notificacao->getPendentes($id_logado);
+		$variaveis['pendentes'] = $pendentes;	
 		$variaveis['titulo'] = 'Listar Submissao';
 		$variaveis['categorias'] = $this->m_submissoes->get();
 		$this->template->load('templating/base', 'submissao/v_listar', $variaveis);
@@ -22,7 +25,9 @@ class Listar extends CI_Controller {
  
             //Executa o método get_produtos
             $variaveis['submissoes'] = $this->m_submissoes->get();            
- 
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
             //Carrega a View
             $this->template->load('templating/base', 'submissao/v_listar', $variaveis);
   	}
@@ -53,10 +58,15 @@ class Listar extends CI_Controller {
 				$variaveis['status_sub'] = $submissao->row()->status_sub;
 				$variaveis['data_submissao'] = $submissao->row()->data_submissao;
 				$variaveis['arquivo'] = $submissao->row()->arquivo;
-
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['categorias'] = $this->m_categorias->get();
 				$this->template->load('templating/base', 'submissao/v_detalhes', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['mensagem'] = "Registro não encontrado." ;
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}

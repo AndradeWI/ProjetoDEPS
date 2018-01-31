@@ -10,7 +10,9 @@ class Cadastro extends CI_Controller {
 	 */
 	public function create()
 	{
-
+		$id_logado = $this->session->userdata('usuario');
+		$pendentes = $this->m_notificacao->getPendentes($id_logado);
+		$variaveis['pendentes'] = $pendentes;	
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 	}
@@ -45,6 +47,9 @@ class Cadastro extends CI_Controller {
 		if (($this->form_validation->run() == FALSE) || ($categoria->num_rows() > 0 )) {
 			$variaveis['titulo'] = 'Novo Registro';
 			$variaveis['mensagem'] = 'Categoria já está cadastrada!';
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 		} else {
 			
@@ -59,8 +64,14 @@ class Cadastro extends CI_Controller {
 			if ($this->m_categorias->store($dados, $id)) {
 				$variaveis['categorias'] = $this->m_categorias->get();
 				$variaveis['mensagem'] = "Dados gravados com sucesso!";
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
@@ -85,8 +96,14 @@ class Cadastro extends CI_Controller {
 				$variaveis['id'] = $categoria->row()->id_categoria;
 				$variaveis['nome'] = $categoria->row()->nome_categoria;
 				$variaveis['descricao'] = $categoria->row()->descricao_categoria;
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$this->template->load('templating/base', 'categoria/v_cadastro', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['mensagem'] = "Registro não encontrado." ;
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}
@@ -105,6 +122,9 @@ class Cadastro extends CI_Controller {
 		if ($categoria->num_rows() > 0) {
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$variaveis['restricao'] = "Categoria não pode ser excluida!";
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 			
 		}
@@ -112,6 +132,9 @@ class Cadastro extends CI_Controller {
 			$this->m_categorias->delete($id);
 			$variaveis['categorias'] = $this->m_categorias->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base', 'categoria/v_home', $variaveis);
 		}
 	}

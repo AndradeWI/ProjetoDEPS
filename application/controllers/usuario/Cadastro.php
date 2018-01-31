@@ -76,6 +76,9 @@ class Cadastro extends CI_Controller {
 				$variaveis['mensagem'] = "Cadastro realizado com sucesso!";
 				$this->load->view('usuario/login', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
 				$this->template->load('templating/base', 'errors/html/v_erro', $variaveis);
 			}

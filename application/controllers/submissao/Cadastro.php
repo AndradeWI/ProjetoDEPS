@@ -10,6 +10,9 @@ class Cadastro extends CI_Controller {
 	 */
 	public function create()
 	{
+		$id_logado = $this->session->userdata('usuario');
+		$pendentes = $this->m_notificacao->getPendentes($id_logado);
+		$variaveis['pendentes'] = $pendentes;	
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$variaveis['categorias'] = $this->m_categorias->get();
 		$this->template->load('templating/base', 'submissao/v_cadastro', $variaveis);
@@ -90,6 +93,9 @@ class Cadastro extends CI_Controller {
 			$variaveis['id_submissao'] = $id;
 			$variaveis['mensagem'] = 'Isbn já está cadastrado!';
 			$variaveis['categorias'] = $this->m_categorias->get();
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base','submissao/v_cadastro', $variaveis);
 		}
 		else {
@@ -120,9 +126,14 @@ class Cadastro extends CI_Controller {
 			if ($this->m_submissoes->store($dados, $id)) {
 				$variaveis['submissoes'] = $this->m_submissoes->get();
 				$variaveis['mensagem'] = "Dados gravados com sucesso!";
-				
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$this->template->load('templating/base','submissao/v_home', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['mensagem'] = "Ocorreu um erro. Por favor, tente novamente.";
 				$this->template->load('templating/base','errors/html/v_erro', $variaveis);
 			}
@@ -155,10 +166,15 @@ class Cadastro extends CI_Controller {
 				$variaveis['isb'] = $submissao->row()->isb;
 				$variaveis['n_pagina'] = $submissao->row()->numero_paginas;
 				$variaveis['sinopse'] = $submissao->row()->sinopse;
-
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['categorias'] = $this->m_categorias->get();
 				$this->template->load('templating/base','submissao/v_cadastro', $variaveis);
 			} else {
+				$id_logado = $this->session->userdata('usuario');
+				$pendentes = $this->m_notificacao->getPendentes($id_logado);
+				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['mensagem'] = "Registro não encontrado." ;
 				$this->template->load('templating/base','errors/html/v_erro', $variaveis);
 			}
@@ -175,6 +191,9 @@ class Cadastro extends CI_Controller {
 		if ($this->m_submissoes->delete($id)) {
 			$variaveis['submissoes'] = $this->m_submissoes->get();
 			$variaveis['mensagem'] = "Registro excluído com sucesso!";
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base','submissao/v_home', $variaveis);
 		}
 	}
@@ -203,7 +222,9 @@ class Cadastro extends CI_Controller {
 		if ($this->m_submissoes->store($dados, $id)) {
 			
 			$variaveis['mensagem'] = "Solicitação enviada!";
-			
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
 			$this->template->load('templating/base', 'home', $variaveis);
 			
 		}    

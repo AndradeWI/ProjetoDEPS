@@ -132,5 +132,5 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('categoria/m_categorias', 'submissao/m_submissoes', 'usuario/m_usuario', 'editora/m_editoras');
+$autoload['model'] = array('categoria/m_categorias', 'submissao/m_submissoes', 'usuario/m_usuario', 'notificacao/m_notificacao', 'editora/m_editoras');
 
