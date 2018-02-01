@@ -29,5 +29,21 @@ class Home extends CI_Controller {
 		$variaveis['notificacao'] = $notificacao;
 		$this->template->load('templating/base', 'notificacao/v_detalhes', $variaveis);
 	}
+
+	public function reload() {
+		$marcadas = $this->input->post("marcadas");
+		
+		for($i = 0; $i < count($marcadas); $i++) {
+			$this->m_notificacao->tiraPendencia($marcadas[$i]);
+		}
+
+		$id_logado = $this->session->userdata('usuario');
+		$pendentes = $this->m_notificacao->getPendentes($id_logado);
+		$variaveis['pendentes'] = $pendentes;
+		
+		$notificacoes = $this->m_notificacao->getAll($id_logado);
+		$variaveis['notificacoes'] = $notificacoes;
+		$this->template->load('templating/base', 'notificacao/v_home', $variaveis);
+	}
 }
 
