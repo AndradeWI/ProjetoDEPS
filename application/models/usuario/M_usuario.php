@@ -59,7 +59,37 @@ class M_usuario extends CI_Model {
 		return $this->db->get('usuario');
 	}
 	
-	
+	public function getAutores($papel = null){
+        if ($papel) {
+            $this->db->where('papel', $papel);
+        }
+        $this->db->order_by("nome", 'desc');
+        return $this->db->get('usuario');
+    }
+
+    public function getUsuarios($papel = null){
+        if ($papel) {
+            $this->db->where('papel', $papel);
+        }
+        $this->db->order_by("nome", 'desc');
+        return $this->db->get('usuario');
+    }
+
+    public function getAvaliadores($papel = null){
+        if ($papel) {
+            $this->db->where('papel', $papel);
+        }
+        $this->db->order_by("nome", 'desc');
+        return $this->db->get('usuario');
+    }
+
+    public function getGerente($papel = null){
+        if ($papel) {
+            $this->db->where('papel', $papel);
+        }
+        $this->db->order_by("nome", 'desc');
+        return $this->db->get('usuario');
+    }
 	
 	public function validate($login, $senha) {
         //$this->db->where('login', $login)->where('senha', md5($senha));
