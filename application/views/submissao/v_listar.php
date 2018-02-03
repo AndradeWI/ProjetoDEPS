@@ -39,12 +39,7 @@
 										<td><?= $submissao->id_submissao ?></td>
 										<td><?= $submissao->titulo ?></td>
 										<td><?= $submissao->data_submissao ?></td>
-										<td><?php 
-												if ($submissao->status_sub == "Submetido") { ?>
-													<span class="badge badge-primary"><?= $submissao->status_sub ?></span>
-												<?php } else if ($submissao->status_sub == "Cancelado") { ?>
-													<span class="badge badge-danger"><?= $submissao->status_sub ?></span>
-												<?php } ?>					
+										<td><?= $submissao->status_sub ?>
 											</td>
 										<td style="text-align: center;"><a  href=" /submissao/listar/detalhes/<?= $submissao->id_submissao ?>"><i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a></td>
