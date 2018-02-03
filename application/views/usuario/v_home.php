@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-7" style="text-align: right;">
                 <div>
-					<a class="btn btn-warning" href="/usuario/manter/create">Novo Cadastro</a>
+					<a class="btn btn-warning" href="/usuario/manter/create">Novo usuário</a>
                 </div>
             </div>
         </div>

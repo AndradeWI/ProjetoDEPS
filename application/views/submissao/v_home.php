@@ -19,8 +19,8 @@
             </div>
             <div class="col-md-7" style="text-align: right;">
                 <div>
-					<a class="btn btn-warning" href="<?= base_url(); ?>/submissao/cadastro/create">Novo Cadastro</a>
-					<a class="btn btn-warning" href="<?= base_url(); ?>/submissao/listar/listar_sub">Listar todas Submissões</a>
+					<a class="btn btn-warning" href="<?= base_url(); ?>/submissao/cadastro/create">Nova submissão</a>
+					<a class="btn btn-warning" href="<?= base_url(); ?>/submissao/listar/listar_sub">Listar todas submissões</a>
                 </div>
             </div>
         </div>
