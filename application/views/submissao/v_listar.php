@@ -30,7 +30,7 @@
 									<th>Título</th>
 									<th>Data submetida</th>
 									<th>Status</th>
-									<th>Destalhes</th>
+									<th>Detalhes</th>
 								</tr>
 							</thead>
 							<tbody>
