@@ -23,8 +23,15 @@
                 </div>
             </div>
         </div>
-
-		<br>
+<label for="selectFiltro">Filtro:</label>
+<select class="form-control" id="selectFiltro" onchange="location = this.value;">
+    <option value="/usuario/home" <? if($select == '0'): ?>selected<? endif; ?>>Todos</option>
+    <option value="/usuario/home/avaliadores" <? if($select == '1'): ?>selected<? endif; ?>>Avaliadores</option>
+    <option value="/usuario/home/autores"<? if($select == '2'): ?>selected<? endif; ?>>Autores</option>
+    <option value="/usuario/home/gerente"<? if($select == '3'): ?>selected<? endif; ?>>Gerente</option>
+    <option value="/usuario/home/usuarios"<? if($select == '4'): ?>selected<? endif; ?>>Usuário</option>
+</select>
+<br>
 				<? if($usuarios->num_rows() > 0): ?>
 					<table class="table table-striped">
 						<thead>
