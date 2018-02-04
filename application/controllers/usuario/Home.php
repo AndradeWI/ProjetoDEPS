@@ -18,7 +18,7 @@ class Home extends CI_Controller {
     }
 
     public function avaliadores(){
-        $papel = "Avaliadores";
+        $papel = "Avaliador";
         $variaveis['mensagem'] = null;
         $variaveis['usuarios'] = $this->m_usuario->getAvaliadores($papel);
         $variaveis['select'] = '1';
