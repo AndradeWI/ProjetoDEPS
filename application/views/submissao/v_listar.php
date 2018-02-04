@@ -7,7 +7,7 @@
 
 			<div class="row">
 				<div class="col-md-5">
-					<h3>Lista de todas Submissões</h3>	
+					<h3>Lista de todas submissões</h3>
 					<? if ($mensagem != null): ?>
 						<div class="alert alert-success text-center">
 							<?= $mensagem; ?>

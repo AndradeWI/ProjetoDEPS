@@ -64,15 +64,20 @@
         <div class="card mb-3">
             <h3 class="card-header">Selecionar avaliador</h3>
             <div class="card-body">
-                <form>
+                <form method="post" action="/submissao/listar/detalhes/<?= $id_submissao ?>">
                     <div class="form-group">
                         <label for="selectAvaliadores">Avaliadores disponíveis:</label>
-                        <select class="form-control" id="selectAvaliadores">
+                        <select class="form-control" name="selectAvaliadores">
                             <? foreach($avaliadores->result() as $avaliador): ?>
                                 <option value="<?= $avaliador->id_usuario ?>"><?= $avaliador->nome ?></option>
                             <? endforeach; ?>
                         </select>
                     </div>
+
+                    <input type='hidden' name="id_submissao" value="<?= $id_submissao ?>">
+                    <!--<input type='hidden' name="id_usuario" value="<?= $id_usuario ?>">-->
+                    <input type='hidden' name="flag" value="1">
+
                     <div class="form-group text-right">
                         <button type="submit" class="btn btn-warning">Selecioar</button>
                     </div>
@@ -80,8 +85,9 @@
             </div>
         </div>
 
-        <? }elseif(($this->session->userdata('papel') == 'Gerente') && ($avaliadores->num_rows() < 1)){ ?>
+        <? }elseif(($this->session->userdata('papel') == 'Gerente') && ($avaliadores->num_rows() < 1) && ($status_sub == 'Enviado')){
+            ?>){ ?>
             <div class="alert alert-dismissible alert-info">
-                Não existem avaliadores cadastrados na editora.
+                Não existem avaliadores cadastrados na editora para realizar a avaliação.
             </div>
         <? } ?>
