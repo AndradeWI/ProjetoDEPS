@@ -39,9 +39,13 @@
 					<p class="card-text"><?= $sinopse ?></p>
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Numero de paginas: <?= $n_pagina ?></li>
-					<li class="list-group-item">Status <?= $status_sub ?></li>
-					<li class="list-group-item">Data <?php 
+					<li class="list-group-item">Número de páginas: <?= $n_pagina ?></li>
+					<li class="list-group-item">Status: <?= $status_sub ?></li>
+                    <?php
+                    if($status_sub == 'Avaliação') { ?>
+                        <li class="list-group-item">Avaliador: </li>
+                    <? } ?>
+					<li class="list-group-item">Data: <?php
 														$date = date_create($data_submissao);
 														echo date_format($date, 'd/m/Y');
 													?>
@@ -54,4 +58,30 @@
 					</a>
 				</div>
 		</div>
-	
+        <?php
+        if (($this->session->userdata('papel') == 'Gerente') && ($avaliadores->num_rows() > 0) && ($status_sub == 'Enviado')){
+        ?>
+        <div class="card mb-3">
+            <h3 class="card-header">Selecionar avaliador</h3>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="selectAvaliadores">Avaliadores disponíveis:</label>
+                        <select class="form-control" id="selectAvaliadores">
+                            <? foreach($avaliadores->result() as $avaliador): ?>
+                                <option value="<?= $avaliador->id_usuario ?>"><?= $avaliador->nome ?></option>
+                            <? endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-warning">Selecioar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <? }elseif(($this->session->userdata('papel') == 'Gerente') && ($avaliadores->num_rows() < 1)){ ?>
+            <div class="alert alert-dismissible alert-info">
+                Não existem avaliadores cadastrados na editora.
+            </div>
+        <? } ?>

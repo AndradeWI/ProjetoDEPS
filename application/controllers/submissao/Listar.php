@@ -62,6 +62,8 @@ class Listar extends CI_Controller {
 				$pendentes = $this->m_notificacao->getPendentes($id_logado);
 				$variaveis['pendentes'] = $pendentes;	
 				$variaveis['categorias'] = $this->m_categorias->get();
+                $papel = "Avaliador";
+                $variaveis['avaliadores'] = $this->m_usuario->getAvaliadores($papel);
 				$this->template->load('templating/base', 'submissao/v_detalhes', $variaveis);
 			} else {
 				$id_logado = $this->session->userdata('usuario');
