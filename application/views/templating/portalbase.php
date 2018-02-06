@@ -65,38 +65,11 @@
     </nav>
 
     <div class="container" style="margin-top: 20px;">
-
-        <form>
-            <fieldset>
-                <legend>Pesquisar livros</legend>
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o título do livro">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fa fa-search"></i></span>
-                        </div>
-                    </div>
-                    <small id="emailHelp" class="form-text text-muted">É autor? <a href="#">cadastre-se</a> no sistema e publique seu livro na nossa Editora</small>
-                </div>
-            </fieldset>
-        </form>
         <div style="margin-top: 20px;">
                 <?= $contents ?>
         </div>
     </div>
     
-<footer style="margin-top: 50px; background-color: #f1f1f1; padding-top: 20px;"> 
-    <div class="container">
-        <div class="row">
-            <ul class="col-lg-12" style="list-style-type: none;">
-                <li class="float-lg-right"><a href="#topo">Voltar ao topo</a></li>
-                <li>Editora - Projeto DEPS</li>
-                <li>Repositório: <a href="https://github.com/manoelangelo/ProjetoDEPS">Github</a>.</li>
-                <li>Equipe: Wanderson, Rusemberg, Rafael, Manoel e Walter.</li>
-            </ul>
-        </div>
-    </div>
-  </footer> 
                
 
 <!-- Bootstrap core JavaScript ================================================== -->

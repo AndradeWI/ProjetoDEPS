@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		if(!$this->session->userdata('logado') || is_null($this->session->userdata('logado'))) {
-			$this->load->view('usuario/login');	
+			$this->template->load('templating/portalbase', 'usuario/login');	
 		} else {
 			$id_logado = $this->session->userdata('usuario');
 			$pendentes = $this->m_notificacao->getPendentes($id_logado);

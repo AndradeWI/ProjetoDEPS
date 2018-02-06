@@ -13,7 +13,7 @@ class Cadastro extends CI_Controller {
 
 		$variaveis['titulo'] = 'Novo Cadastro';
 		$variaveis['editoras'] = $this->m_editoras->get();
-		$this->load->view('usuario/v_cadastro', $variaveis);
+		$this->template->load('templating/portalbase', 'usuario/v_cadastro', $variaveis);
 	}
 	/**
 	 * Salva o registro no banco de dados.

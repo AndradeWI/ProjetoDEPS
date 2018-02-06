@@ -1,3 +1,20 @@
+<form>
+            <fieldset>
+                <legend>Pesquisar livros</legend>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o título do livro">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">É autor? <a href="#">cadastre-se</a> no sistema e publique seu livro na nossa Editora</small>
+                </div>
+            </fieldset>
+        </form>
+
+        
+
 <h2>Lançamentos</h2>
 <hr />
 <!--
