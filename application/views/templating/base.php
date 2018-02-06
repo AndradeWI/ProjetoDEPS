@@ -61,6 +61,13 @@ if (!$this->session->userdata('logado')) {
                         <li class="nav-item"><a class="nav-link" href="/categoria/home">Categoria</a></li>
                         <li class="nav-item"><a class="nav-link" href="/submissao/home">Submissão</a></li>
                     <?php } ?>
+
+                    <?php
+                    if ($this->session->userdata('papel') == 'Avaliador') {
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="/avaliador/home">Avaliação</a></li>
+                    <?php } ?>
+
                     <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>/usuario/login/logoff" style="margin-left: 10px;">Logout</a></li>       
                 </ul>
             </div>
