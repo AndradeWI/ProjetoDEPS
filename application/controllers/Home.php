@@ -6,8 +6,10 @@ class Home extends CI_Controller {
     
 	public function index()
 	{
+		#if(!$this->session->userdata('logado') || is_null($this->session->userdata('logado'))) {
+			#$this->load->view('usuario/login');
 		if(!$this->session->userdata('logado') || is_null($this->session->userdata('logado'))) {
-			$this->load->view('usuario/login');	
+			$this->load->view('portal');	
 		} else {
 			if($this->session->userdata('papel') == 'Gerente') {
 				$variaveis['submissoes'] = $this->m_submissoes->buscaPorStatus("Enviado");

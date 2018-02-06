@@ -7,6 +7,10 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
     }
+
+    public function index(){
+        $this->load->view('usuario/login');
+    }
     
     public function validar() {
         $login = $this->input->post('login');
@@ -34,7 +38,8 @@ class Login extends CI_Controller {
         $this->session->unset_userdata("papel"); 
         $this->session->unset_userdata("usuario"); 
         $this->session->sess_destroy(); 
-        redirect('home'); 
+        redirect('portal');
+
         session_write_close(); 
         exit; 
     }

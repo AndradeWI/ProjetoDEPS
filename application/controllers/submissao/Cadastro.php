@@ -106,7 +106,7 @@ class Cadastro extends CI_Controller {
 			$dados = array(
 
 				"titulo" => $this->input->post('titulo_submissao'),
-				"status_sub" =>'Enviado',
+				"status_sub" =>'Submetido',
 				"isb" => $this->input->post('isb'),
 				"sinopse" => $this->input->post('sinopse'),
 				"arquivo" =>$data,

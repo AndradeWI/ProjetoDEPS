@@ -47,7 +47,7 @@ class Listar extends CI_Controller {
 				$variaveis['titulo_submissao'] = $submissao->row()->titulo;
 				$variaveis['id_categoria_atual'] = $idcateg;
 				$variaveis['categoria_atual'] = $categ->row()->nome_categoria;
-				$variaveis['isb'] = $submissao->row()->isb;
+				$variaveis['isbn'] = $submissao->row()->isb;
 				$variaveis['n_pagina'] = $submissao->row()->numero_paginas;
 				$variaveis['sinopse'] = $submissao->row()->sinopse;
 				$variaveis['status_sub'] = $submissao->row()->status_sub;
