@@ -8,6 +8,7 @@ class Home extends CI_Controller
         $variaveis['avaliacoes'] = $this->m_avaliacao->get();
         $variaveis['avaliadores'] = $this->m_avaliador->get();
         $variaveis['usuarios'] = $this->m_usuario->get();
+        $variaveis['formularios'] = $this->m_formulario->get();
         $this->template->load('templating/base', 'avaliador/v_home', $variaveis);
     }
 
@@ -20,7 +21,7 @@ class Home extends CI_Controller
             $this->template->load('templating/base', 'avaliador/v_formulario', $variaveis);
         }
     }
-
+    
     public function store()
     {
         $dados = array(
