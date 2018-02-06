@@ -68,8 +68,7 @@ if ($this->session->userdata('papel') != 'Avaliador') {
     </div>
 <? endif; ?>
 
-
-
+<!--A segunda tabela fica abaixo-->
 <div class="row">
     <div class="col-md-5">
         <h3>Avaliações feitas</h3>
@@ -77,7 +76,7 @@ if ($this->session->userdata('papel') != 'Avaliador') {
     <div class="col-md-7" style="text-align: right;"></div>
 </div>
 
-<? if ($avaliacoes->num_rows() > 0): ?>
+<? if (($avaliacoes->num_rows() > 0) && ($formularios)->num_rows() > 0): ?>
     <table class="table table-striped">
         <thead>
         <tr>
