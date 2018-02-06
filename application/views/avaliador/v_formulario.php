@@ -112,7 +112,7 @@ if ($this->session->userdata('papel') != 'Avaliador') {
     </table>
 
     <div>
-        <label>Existem uma ou mais obras semelhante publsicada nos últimos 5 anos?</label>
+        <label>Existem uma ou mais obras semelhante publicação nos últimos 5 anos?</label>
         <div class="radio">
             <label><input type="radio" name="obras_semelhantes_nos_ultimos_cinco_anos" value="1">Sim</label>
         </div>
@@ -140,6 +140,9 @@ if ($this->session->userdata('papel') != 'Avaliador') {
             <label><input type="radio" name="parecer" value="2">Não</label>
         </div>
     </div>
+
+    <input type="hidden" name="fk_id_avaliacao" value="<?= $id_avaliacao ?>">
+
     <div class="form-group text-right">
         <button type="submit" class="btn btn-primary">Enviar</button>
     </div>

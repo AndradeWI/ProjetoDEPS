@@ -6,7 +6,7 @@ if ($this->session->userdata('papel') != 'Avaliador') {
 
 <div class="row">
     <div class="col-md-5">
-        <h3>Avaliações</h3>
+        <h3>Avaliações a fazer</h3>
     </div>
     <div class="col-md-7" style="text-align: right;"></div>
 </div>
@@ -53,7 +53,7 @@ if ($this->session->userdata('papel') != 'Avaliador') {
                             <? endif; ?>
                         <? endforeach; ?>
                     </td>
-                    <td><a href="<?= base_url(); ?>/avaliador/home/formulario/<?= $avaliacao->id_avaliacao ?>">Ficha de avaliação</a></td>
+                    <td><a href="<?= base_url(); ?>/avaliador/home/formulario/<?= $avaliacao->id_avaliacao ?>">Preencher ficha de avaliação</a></td>
                 </tr>
             <? endforeach; ?>
         </tbody>
@@ -63,3 +63,26 @@ if ($this->session->userdata('papel') != 'Avaliador') {
         Nenhuma avaliação designada para você.
     </div>
 <? endif; ?>
+
+<div class="row">
+    <div class="col-md-5">
+        <h3>Avaliações feitas</h3>
+    </div>
+    <div class="col-md-7" style="text-align: right;"></div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Observações</th>
+        <th>Submissão</th>
+        <th>Avaliador</th>
+        <th>Autor</th>
+        <th>Ação</th>
+    </tr>
+    </thead>
+    <tbody class="text-left">
+    
+    </tbody>
+</table>

@@ -55,4 +55,10 @@ class M_avaliacao extends CI_Model
         $subs = $this->db->get('avaliacao');
         return $subs;
     }
+
+    public function delete($id = null){
+        if ($id) {
+            return $this->db->where('id_avaliacao', $id)->delete('avaliacao');
+        }
+    }
 }

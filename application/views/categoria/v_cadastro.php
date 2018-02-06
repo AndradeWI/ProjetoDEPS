@@ -27,5 +27,5 @@
 			<a class="btn btn-danger " href="<?= base_url(); ?>categoria/home" role="button">Cancelar</a>
 				<input type="submit" value="Salvar" class="btn btn-success" />
 		</div>
-		<input type='hidden' name="id" value="<?= set_value('id') ? : (isset($id) ? $id : ''); ?>">					
+		<input type='hidden' name="fk_id_avaliacao" value="<?= set_value('id') ? : (isset($id) ? $id : ''); ?>">
 	</form>
