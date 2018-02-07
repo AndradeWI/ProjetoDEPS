@@ -16,7 +16,7 @@
             <div class="col-md-7" style="text-align: right;">
             <form action="/notificacao/home/reload" method="post">
                 <div>
-					<button type="submit" class="btn btn-warning">Atualizar</a>
+					<button type="submit" class="btn btn-warning">Atualizar</button>
                 </div>
             </div>
         </div>
