@@ -21,6 +21,11 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function portal()
+	{
+		$this->template->load('templating/portalbase', 'portal/v_home');
+	}
+
 	public function submissoes() {
 		$id_logado = $this->session->userdata('usuario');
 		$pendentes = $this->m_notificacao->getPendentes($id_logado);

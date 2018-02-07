@@ -25,7 +25,7 @@ class Login extends CI_Controller {
             exit;
         } else {
             $data['error'] = "Login ou senha incorretos!";
-            $this->load->view('usuario/login', $data);
+            $this->template->load('templating/portalbase', 'usuario/login', $data);
         }
     }
 
@@ -34,7 +34,7 @@ class Login extends CI_Controller {
         $this->session->unset_userdata("papel"); 
         $this->session->unset_userdata("usuario"); 
         $this->session->sess_destroy(); 
-        redirect('home'); 
+        redirect('portal'); 
         session_write_close(); 
         exit; 
     }

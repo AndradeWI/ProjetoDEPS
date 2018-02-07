@@ -309,10 +309,19 @@ CREATE TABLE `submissao` (
 --
 
 INSERT INTO `submissao` (`id_submissao`, `titulo`, `data_submissao`, `status_sub`, `isb`, `sinopse`, `arquivo`, `disponivel`, `numero_paginas`, `fk_id_categoria`, `fk_id_usuario`) VALUES
-(53, 'geral', '2017-12-17 23:22:12', 'Enviado', 0, 'mkvmfdkmfdk', 'http://localhost:2222//submissao/cadastro/download?arquivo=gdkaUnHX/', 0, 5666, 15, 1),
-(54, 'dfdfdf', '2017-12-18 17:26:25', 'Enviado', 60, 'testando', 'http://localhost:9000//submissao/cadastro/download?arquivo=okyndqSf/40c5d93959f8981174cfd782f5cf703f.pdf', 0, 85, 12, 1),
-(55, 'teste', '2017-12-18 17:37:32', 'Enviado', 65, 'bhdbsj', 'http://localhost:9000//submissao/cadastro/download?arquivo=jDowytbJ/49c35500c32d8fc192616ab732acfe81.pdf', 0, 485, 12, 1),
-(56, 'caramelo', '2017-12-18 23:27:38', 'Enviado', 79, 'testando caramelo', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3);
+(1, 'Submissão Script 1', '2017-12-17 23:22:12', 'Submetido', 0, 'Sinopse Submissão Script 1', 'http://localhost:2222//submissao/cadastro/download?arquivo=gdkaUnHX/', 0, 5666, 15, 1),
+(2, 'Submissão Script 2', '2017-12-18 17:26:25', 'Submetido', 60, 'Sinopse Submissão Script 2', 'http://localhost:9000//submissao/cadastro/download?arquivo=okyndqSf/40c5d93959f8981174cfd782f5cf703f.pdf', 0, 85, 12, 1),
+(3, 'Submissão Script 3', '2017-12-18 17:37:32', 'Submetido', 65, 'Sinopse Submissão Script 3', 'http://localhost:9000//submissao/cadastro/download?arquivo=jDowytbJ/49c35500c32d8fc192616ab732acfe81.pdf', 0, 485, 12, 1),
+(4, 'Submissão Script 4', '2017-12-18 23:27:38', 'Submetido', 79, 'Sinopse Submissão Script 4', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(5, 'Submissão Script 5', '2017-12-18 23:27:38', 'Publicado', 80, 'Sinopse Submissão Script 5', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(6, 'Submissão Script 6', '2017-12-18 23:27:38', 'Publicado', 81, 'Sinopse Submissão Script 6', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(7, 'Submissão Script 7', '2017-12-18 23:27:38', 'Publicado', 82, 'Sinopse Submissão Script 7', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(8, 'Submissão Script 8', '2017-12-18 23:27:38', 'Publicado', 83, 'Sinopse Submissão Script 8', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(9, 'Submissão Script 9', '2017-12-18 23:27:38', 'Publicado', 83, 'Sinopse Submissão Script 9', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(10, 'Submissão Script 10', '2017-12-18 23:27:38', 'Publicado', 83, 'Sinopse Submissão Script 10', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(11, 'Submissão Script 11', '2017-12-18 23:27:38', 'Publicado', 83, 'Sinopse Submissão Script 11', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(12, 'Submissão Script 12', '2017-12-18 23:27:38', 'Publicado', 83, 'Sinopse Submissão Script 12', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3),
+(13, 'Submissão Script 13', '2017-12-18 23:27:38', 'Publicado', 83, 'Sinopse Submissão Script 13', 'http://localhost:9000//submissao/cadastro/download?arquivo=ABZVlHzx/7d4bf1e96283675345580bc140837abf.pdf', 0, 59, 29, 3);
 
 -- --------------------------------------------------------
 
@@ -493,6 +502,77 @@ ALTER TABLE `submissao`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`fk_id_editora`) REFERENCES `editora` (`id_editora`);
+
+
+ CREATE TABLE `notificacao` ( 
+  `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, 
+  `pendente` int(1) NOT NULL, 
+  `titulo` varchar(120) NOT NULL, 
+  `mensagem` varchar(255) NOT NULL, 
+  `data` date DEFAULT NULL, 
+  `action_path` varchar(120) DEFAULT NULL, 
+  `fk_id_usuario` int(11) NOT NULL, 
+  `fk_id_submissao` int(11) NOT NULL, 
+  PRIMARY KEY (`id_notificacao`), 
+  KEY `fk_id_usuario` (`fk_id_usuario`), 
+  KEY `fk_id_submissao` (`fk_id_submissao`), 
+  CONSTRAINT `notificacao_ibfk_1` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`), 
+  CONSTRAINT `notificacao_ibfk_2` FOREIGN KEY (`fk_id_submissao`) REFERENCES `submissao` (`id_submissao`) 
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1; 
+
+
+
+CREATE TABLE `avaliacao` ( 
+  `id_avaliacao` int(11) NOT NULL, 
+  `data_avaliacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+  `observacao` varchar(200) DEFAULT NULL, 
+  `fk_id_submissao` int(11) NOT NULL, 
+  `fk_id_avaliador` int(11) NOT NULL, 
+  `fk_id_usuario` int(11) NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+ 
+ALTER TABLE `avaliacao` 
+  ADD PRIMARY KEY (`id_avaliacao`), 
+  ADD KEY `fk_id_avaliador` (`fk_id_avaliador`), 
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`), 
+  ADD KEY `fk_id_submissao` (`fk_id_submissao`); 
+ 
+ALTER TABLE `avaliacao` 
+  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT; 
+ 
+ALTER TABLE `avaliacao` 
+  ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`fk_id_avaliador`) REFERENCES `avaliador` (`id_avaliador`), 
+  ADD CONSTRAINT `avaliacao_ibfk_2` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`), 
+  ADD CONSTRAINT `avaliacao_ibfk_3` FOREIGN KEY (`fk_id_submissao`) REFERENCES `submissao` (`id_submissao`);
+
+
+
+ CREATE TABLE formulario( 
+  id_formulario int(11) NOT NULL, 
+  fk_id_avaliacao int(11) NOT NULL, 
+  o_tema_e_relevante int (2) NOT NULL, 
+  o_tema_e_atual int (2) NOT NULL, 
+  a_obra_comunica_pesquisa_original int (2) NOT NULL, 
+  a_pesquisa_e_predominantemente_qualitativa int (2) NOT NULL, 
+  a_pesquisa_e_predominantemente_quantitativa int (2) NOT NULL, 
+  a_pesquisa_apresenta_rigor_cientifico int (2) NOT NULL, 
+  a_abordagem_do_tema_e_inovadora int (2) NOT NULL, 
+  o_titulo_e_adequado int (2) NOT NULL, 
+  a_escrita_e_clara_e_objetiva int (2) NOT NULL, 
+  as_ilustracoes_estao_bem_preparadas int (2) NOT NULL, 
+  biblio_e_representativa_dos_estudos_relevantes_sobre_o_tema int (2) NOT NULL, 
+  biblio_utilizada_e_atual int (2) NOT NULL, 
+  obras_semelhantes_nos_ultimos_cinco_anos int (2) NOT NULL, 
+  comente_os_aspectos_positivos varchar(500), 
+  comente_os_aspectos_negativos varchar(500), 
+  parecer int (2) NOT NULL 
+)ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+ 
+ALTER TABLE formulario 
+  ADD PRIMARY KEY (id_formulario), 
+  ADD KEY fk_id_avaliacao (fk_id_avaliacao); 
+
+  
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

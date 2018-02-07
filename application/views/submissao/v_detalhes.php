@@ -33,7 +33,7 @@
 				<h3 class="card-header"><?= $titulo_submissao ?></h3>
 				<div class="card-body">
 					<h5 class="card-title">Categoria: <?= $categoria_atual ?></h5>
-					<h6 class="card-subtitle text-muted">ISBN: <?= $isbn ?></h6>
+					<h6 class="card-subtitle text-muted">ISBN: <?= $isb ?></h6>
 				</div>
 				<div class="card-body">
 					<p class="card-text"><?= $sinopse ?></p>
@@ -52,6 +52,12 @@
 						<i class="fa fa-download" aria-hidden="true"></i>
 						Baixar livro 
 					</a>
+
+					<?php if ($status_sub != "Publicado" && $this->session->userdata('papel') == "Gerente") { ?>
+						<a href="/submissao/cadastro/publicacao/<?= $id_submissao ?>" class="btn btn-danger" style="float: right;" role="button">Publicar submissão</a>
+					<?php } ?>
+
 				</div>
+			
 		</div>
 	

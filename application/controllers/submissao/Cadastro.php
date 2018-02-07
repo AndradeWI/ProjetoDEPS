@@ -230,5 +230,22 @@ class Cadastro extends CI_Controller {
 		}    
 		
 	}
+
+	public function publicacao($id){
+		
+		$submissao = $this->m_submissoes->get($id);
+		$dados["status_sub"] = "Publicado";
+
+		if($this->m_submissoes->store($dados, $id)){
+			$variaveis['mensagem'] = "Livro <?= $submissao->titulo ?> publicado!";
+			$variaveis['submissoes'] = $this->m_submissoes->get();            
+			$id_logado = $this->session->userdata('usuario');
+			$pendentes = $this->m_notificacao->getPendentes($id_logado);
+			$variaveis['pendentes'] = $pendentes;	
+           
+            $this->template->load('templating/base', 'submissao/v_listar', $variaveis);
+		}
+		
+	}
 	
 }

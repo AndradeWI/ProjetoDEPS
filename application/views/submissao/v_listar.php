@@ -44,6 +44,10 @@
 													<span class="badge badge-primary"><?= $submissao->status_sub ?></span>
 												<?php } else if ($submissao->status_sub == "Cancelado") { ?>
 													<span class="badge badge-danger"><?= $submissao->status_sub ?></span>
+												<?php } else if($submissao->status_sub == "Publicado") { ?>
+													<span class="badge badge-success"><?= $submissao->status_sub ?></span>
+												<?php } else if($submissao->status_sub == "Enviado") { ?>
+													<span class="badge badge-warning"><?= $submissao->status_sub ?></span>
 												<?php } ?>					
 											</td>
 										<td style="text-align: center;"><a  href=" /submissao/listar/detalhes/<?= $submissao->id_submissao ?>"><i class="fa fa-info-circle" aria-hidden="true"></i>

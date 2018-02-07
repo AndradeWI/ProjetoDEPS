@@ -40,14 +40,17 @@ class M_submissoes extends CI_Model {
 			$this->db->where('id_submissao', $id);
 		}
 		$this->db->order_by("id_submissao", 'desc');
+
 		return $this->db->get('submissao');
 	}
 
 	public function buscaPorStatus($status){
 
 		$this->db->where('status_sub', $status);
-		
-		$this->db->order_by("id_submissao", 'desc');
+		$this->db->order_by("data_submissao", 'desc');
+		if($status == "Publicado"){
+			$this->db->limit(8);
+		}
 		$subs = $this->db->get('submissao');
 		return $subs;
 	}
@@ -79,6 +82,24 @@ class M_submissoes extends CI_Model {
 		$this->db->order_by("fk_id_categoria", 'desc');
 		return $this->db->get('submissao');
 	}
+
+	//Pesquisa de Livros publicados com like
+	public function pesquisa($pesquisa = null){
+		$status = 'Publicado';
+
+		if($pesquisa){
+			$this->db->from('submissao');
+			$this->db->where('status_sub', $status);
+			$this->db->like('titulo', $pesquisa);
+		}else{
+			$this->db->from('submissao');
+			return $this->db->get();
+		}
+
+		$this->db->order_by('id_submissao', 'desc');
+		return $this->db->get();
+	}
+
 	/**
 	 * Deleta um registro.
 	 * @param $id do registro a ser deletado
