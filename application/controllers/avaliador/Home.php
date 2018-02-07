@@ -9,6 +9,11 @@ class Home extends CI_Controller
         $variaveis['avaliadores'] = $this->m_avaliador->get();
         $variaveis['usuarios'] = $this->m_usuario->get();
         $variaveis['formularios'] = $this->m_formulario->get();
+
+        $id_logado = $this->session->userdata('usuario');
+        $pendentes = $this->m_notificacao->getPendentes($id_logado);
+        $variaveis['pendentes'] = $pendentes;
+
         $this->template->load('templating/base', 'avaliador/v_home', $variaveis);
     }
 
@@ -18,6 +23,10 @@ class Home extends CI_Controller
             //$avaliacao = $this->m_categorias->get($id);
 
             $variaveis['id_avaliacao'] = $id;
+
+            $id_logado = $this->session->userdata('usuario');
+            $pendentes = $this->m_notificacao->getPendentes($id_logado);
+            $variaveis['pendentes'] = $pendentes;
             $this->template->load('templating/base', 'avaliador/v_formulario', $variaveis);
         }
     }
