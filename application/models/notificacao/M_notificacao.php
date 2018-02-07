@@ -27,5 +27,24 @@ class M_notificacao extends CI_Model {
         $this->db->where('id_notificacao', intval($id));
         $this->db->update("notificacao", $dados);
     }
-      
+
+    public function store($dados = null, $id = null) {
+        if ($dados) {
+            if ($id) {
+                $this->db->where('id_notificacao', $id);
+                if ($this->db->update("notificacao", $dados)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if ($this->db->insert("notificacao", $dados)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+    }
 }

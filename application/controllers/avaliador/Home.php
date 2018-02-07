@@ -65,6 +65,17 @@ class Home extends CI_Controller
 
         //notificar o gerente que a avaliacao foi feita
 
+        //notificar o autor que a submissão mudou de status
+        $dados_notificacao_autor = array(
+            "pendente" => 1,
+            "titulo" => 'A submissão '.$id_submissao.' foi avaliada..',
+            "mensagem" => 'A sua submissão '.$id_submissao.' foi avaliada.',
+            "action_path" => '//submissao/listar/detalhes/'.$id_submissao,
+            "fk_id_usuario" => $submissao->row()->fk_id_usuario,
+            "fk_id_submissao" => $id_submissao
+        );
+        $this->m_notificacao->store($dados_notificacao_autor);
+
         $this->index();
     }
 }

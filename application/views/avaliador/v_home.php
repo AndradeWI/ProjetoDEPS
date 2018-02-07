@@ -55,7 +55,7 @@ if ($this->session->userdata('papel') != 'Avaliador') {
                                 <? endif; ?>
                             <? endforeach; ?>
                         </td>
-                        <td><a href="<?= base_url(); ?>/avaliador/home/detalhes/<?= $avaliacao->id_avaliacao ?>">Preencher ficha de avaliação</a></td>
+                        <td><a href="<?= base_url(); ?>/avaliador/home/formulario/<?= $avaliacao->id_avaliacao ?>">Preencher ficha de avaliação</a></td>
                     </tr>
                 <? endif; ?>
             <? endforeach; ?>

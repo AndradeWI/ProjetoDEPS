@@ -106,6 +106,28 @@ class Listar extends CI_Controller
                 );
                 $this->m_avaliacao->store($dados_avaliacao);
 
+                //notificar o avaliador que ele tem uma nova avaliacao
+                $dados_notificacao_avaliador = array(
+                    "pendente" => 1,
+                    "titulo" => 'Você tem uma nova avaliação.',
+                    "mensagem" => 'Foi designidado para você realizar a avaliação da submissão '.$id_submissao.'.',
+                    "action_path" => '/avaliador/home',
+                    "fk_id_usuario" => $id_usuario_avaliador,
+                    "fk_id_submissao" => $id_submissao
+                );
+                $this->m_notificacao->store($dados_notificacao_avaliador);
+
+                //notificar o autor sobre a movimentação da submissão
+                $dados_notificacao_autor = array(
+                    "pendente" => 1,
+                    "titulo" => 'A submissão '.$id_submissao.' está agora em "Avaliação".',
+                    "mensagem" => 'A sua submissão '.$id_submissao.' está agora na fase de avaliação.',
+                    "action_path" => '//submissao/listar/detalhes/'.$id_submissao,
+                    "fk_id_usuario" => $submissao->row()->fk_id_usuario,
+                    "fk_id_submissao" => $id_submissao
+                );
+                $this->m_notificacao->store($dados_notificacao_autor);
+
                 $this->listar_sub();
 
             } else {
